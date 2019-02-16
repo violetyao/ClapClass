@@ -1,3 +1,17 @@
+/**
+    get_user_name(userId) // Given a userId, return the corresponding username
+	get_stu_id(userId) // return the stuId given a userId
+	get_user_name(stuId) // return the username of corresponding stuId
+	get_user_list() // return a dictionary of {studentid: username}
+	get_userId_list() // return a dictionary of {userid : studentid}
+	get_subject_list() // return a list of all subjects
+	get_classes_list(suject) // return a list of all classes of a certain subject
+	get_user_class(user) // return a list of all classes a certain user is taking
+	get_class_user(class) // return all users of a certain class
+	get_same_class(user1, user2) // return a list of all the same classes of user1, user2
+	get_same_user(class1, class2) // return a list of all the same users of two classes
+*/
+
 var config = {
 	apiKey: "AIzaSyAQFwlKzWWjfxtw6-7QSLbcgtkmoXuMiq4",
 	authDomain: "treehack-e780a.firebaseapp.com",
@@ -26,6 +40,11 @@ function fetch_all_users() {
   		Id = snapshot.val();
   	})
 }
+function get_user_name(userid) {
+
+}
+
+function get_Stu_Id
 //Return a list of all users
 function get_user_list() {
 	var user_list = [];
