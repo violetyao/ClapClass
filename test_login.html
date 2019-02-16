@@ -16,15 +16,6 @@
 
 </head>
 <body>
-<textarea id="email" rows="1" cols="30" placeholder="email"></textarea>
-</br>
-<textarea id="password" rows="1" cols="30" placeholder="password"></textarea>
-</br>
-<button onclick="button_signup()">Sign Up</button>
-<button onclick="button_signin()">Log in</button>
-</br>
-<button onclick="print_user_token()">Get Info</button>
-<button onclick="signout_user()">Sign Out</button>
 <script>
     // Initialize Firebase
     // TODO: Replace with your project's customized code snippet
@@ -52,6 +43,25 @@
             var errorCode = error.code;
             var errorMessage = error.message;
         });
+
 </script>
+<textarea id="email" rows="1" cols="30" placeholder="email"></textarea>
+<br>
+<textarea id="password" rows="1" cols="30" placeholder="password"></textarea>
+<br>
+<button onclick="button_signup()">Sign Up</button>
+<button onclick="button_signin()">Log in</button>
+<br>
+<button onclick="print_user_token()">Get Info</button>
+<button onclick="signout_user()">Sign Out</button>
+<br>
+<br>
+<textarea id="sid" rows="1" cols="30" placeholder="student id"></textarea>
+<textarea id="answers" rows="1" cols="30" placeholder="answers"></textarea>
+<textarea id="classes" rows="1" cols="30" placeholder="classes"></textarea>
+<textarea id="name" rows="1" cols="30" placeholder="name"></textarea>
+<textarea id="preferences" rows="1" cols="30" placeholder="preferences"></textarea>
+<br>
+<button onclick="test_user_boxing()">Write User</button>
 </body>
 </html>
