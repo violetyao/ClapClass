@@ -30,7 +30,16 @@ candidates is 	[
 				]
 */
 function rank_users(user_list, candidates){
-
+	max = 0;
+	max_index = 0;
+	for (i = 0; i < candidates.length; i++) {
+		curr_correlation = matrix_correlation(candidates[i], user_list);
+		if (max < curr_correlation){
+			max = curr_correlation;
+			max_index = i;
+		}
+	}
+	return max_index;
 }
 
 /*
@@ -40,5 +49,6 @@ and then we combine all these ranking lists into a big list and return it
 */
 
 function complete_ranking_users(user_lists){
+	
 
 }
