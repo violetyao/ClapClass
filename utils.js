@@ -45,7 +45,7 @@ function rank_users(u, candidates){
 	for (i = 0; i < candidates.length; i++) {
 		var cand = candidates[i];
 		var curr_correlation = computeUserCorrelation(u, cand);
-		var data_pair = [cand.id, curr_correlation];
+		var data_pair = [cand.uid, curr_correlation];
 		queue.push(data_pair);
 	}
 	var result = new Array(candidates.length);
