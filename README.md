@@ -27,6 +27,7 @@ Simple interface to select what class
 
 ### Dashboard
 Dashboard page to guide users to enter Group-Matching/My Groups.
+
 Group-Matching leads to Partner Page. 
 My Groups leads to lecture notes sharing, when2meet, etc.
 
