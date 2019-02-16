@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	
 	<!-- Firebase App is always required and must be first -->
 	<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-app.js"></script>
 
@@ -10,30 +11,11 @@
 	<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-firestore.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-messaging.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-functions.js"></script>
+    <script type="text/javascript" src="./API.js"></script>
 	<title></title>
 </head>
-<body>
-	<input type="button" name="fetchdata", value="fetchdata", onclick="fetch()">
-	<script>
-	  // Initialize Firebase
-	  // TODO: Replace with your project's customized code snippet
-	  var config = {
-	    apiKey: "AIzaSyAQFwlKzWWjfxtw6-7QSLbcgtkmoXuMiq4",
-	    authDomain: "treehack-e780a.firebaseapp.com",
-	    databaseURL: "https://treehack-e780a.firebaseio.com",
-	    projectId: "treehack-e780a",
-	    storageBucket: "treehack-e780a.appspot.com",
-	    messagingSenderId: "22555346969",
-	  };
-	  firebase.initializeApp(config);
-
-	  function fetch() {
-	  	firebase.database().ref('Username').on('value', function(snapshot){
-        	data = snapshot.val();
-        	console.log(data);
-        	console.log(typeof(data));
-	  	})
-	  }
-	</script>
+<body onload="fetch_all_users()">
+	<input type="button" name="fetchdata" value="fetchdata" onclick="fetch_all_users()">
+	<input type="button" value = "fetch_user_course" onclick = "fetch_user_major('Frank')">
 </body>
 </html>
