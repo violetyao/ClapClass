@@ -29,9 +29,14 @@ $(document).ready(function () {
 });
 
 function signup() {
-    let email = $("#loginform > input[type=email]").val();
-    let password = $("#loginform > input[type=password]").val();
+    let name = $("#signupform > input[type=name]");
+    let email = $("#signupform > input[type=email]").val();
+    let password = $("#signupform > input[type=password]").val();
     create_user(email, password);
+    //signin_user(email, password);
+    let uid = fetch_user_id();
+    console.log(uid);
+    //u = new User(null, null, null, name, null, uid);
     console.log("Signing Up")
 }
 
@@ -40,5 +45,5 @@ function login() {
     let password = $("#loginform > input[type=password]").val();
     signin_user(email, password);
     console.log("Signing In");
-    console.log("User ID: " + get_user_id() + " signed in")
+    console.log("User ID: " + fetch_user_id() + " signed in")
 }
