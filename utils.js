@@ -45,7 +45,7 @@ function rank_users(u, candidates){
 	for (i = 0; i < candidates.length; i++) {
 		var cand = candidates[i];
 		var curr_correlation = computeUserCorrelation(u, cand);
-		var data_pair = [cand.id, curr_correlation];
+		var data_pair = [cand.uid, curr_correlation];
 		queue.push(data_pair);
 	}
 	var result = new Array(candidates.length);
@@ -75,9 +75,15 @@ function complete_ranking_users(users) {
         pList = rank_users(users[i], users);
         pList.shift(); // delte the first entry, which is itself
         users[i].preference = pList;
-        // TODO: store back to database
+		users[i].write();        
     }
 }
+
+/*
+* u: user type
+* Further improve the preference lists for u
+* Return the list, does not update directly to user
+*/
 
 function further_improve_ranking(u, users){
 	pList = u.preference;
@@ -85,6 +91,7 @@ function further_improve_ranking(u, users){
 	var queue = new PriorityQueue(comp);
 
 	for (i = 0; i < pList.length; i ++){
+
 		var origin_corr = pList[i][1];
 		var other_id = pList[i][0];
 
@@ -100,12 +107,16 @@ function further_improve_ranking(u, users){
 	return newList;
 }
 
+/*
+* Use f_i_r to improve everyone
+*/
+
 function further_improve_everyone(users){
 	for (i =0; i < users.length; i ++){
 		var u = users[i];
 		var new_list = further_improve_ranking(u, users);
 		u.preference = new_list;
-		// TODO: update to database!!!
+		u.write();
 	}
 }
 
