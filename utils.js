@@ -81,11 +81,31 @@ function complete_ranking_users(users) {
 
 function further_improve_ranking(u, users){
 	pList = u.preference;
+	var newList = new Array(pList.length);
+	var queue = new PriorityQueue(comp);
+
 	for (i = 0; i < pList.length; i ++){
-		var ux = users[pList[i][0]];
-		var answer_corr = correlation(u, ux);
-		var origin_corr = pList[i][0];
+		var origin_corr = pList[i][1];
+		var other_id = pList[i][0];
+
+		var ux = users[other_id];
+
+		var answer_corr = correlation(u.answers, ux.answers);
 		var new_corr = answer_corr * origin_corr;
+		queue.push([other_id, new_corr]);
+	}
+	for (i = 0; i < Math.min(candidates.length, suggestionMax) ; i++) {
+		newList[n - i - 1] = queue.pop()[0]; 
+	}
+	return newList;
+}
+
+function further_improve_everyone(users){
+	for (i =0; i < users.length; i ++){
+		var u = users[i];
+		var new_list = further_improve_ranking(u, users);
+		u.preference = new_list;
+		// TODO: update to database!!!
 	}
 }
 
