@@ -4,4 +4,10 @@ class user {
         this.classes = classes;
         this.schedule = schedule;
     }
+
+    get userVector() {
+        return this.classes;
+    }
+
+
 }
