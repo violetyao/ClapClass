@@ -1,7 +1,7 @@
 /**
     get_user_name_uid(userId) // Given a userId, return the corresponding username
 	get_stu_id(userId) // return the stuId given a userId
-	get_user_id(stuId) // return the userId given a stuId
+	fetch_user_id(stuId) // return the userId given a stuId
 	get_user_name_stuid(stuId) // return the username of corresponding stuId
 	get_user_list() // return a dictionary of {studentid: username}
 	get_userid_list() // return a list of all uid
@@ -23,7 +23,7 @@ var config = {
 	storageBucket: "treehack-e780a.appspot.com",
 	messagingSenderId: "22555346969",
 };
-firebase.initializeApp(config)；
+firebase.initializeApp(config);
 
 //Global Variable: Id : All id objects
 //                 All_users_info: all users objects
@@ -40,7 +40,7 @@ function fetch_all_users() {
   		all_classes_info = snapshot.val();
   	})
   	firebase.database().ref('UserId').on('value', function(snapshot){
-  		Id = snapshot.val();
+  		allId = snapshot.val();
   	})
 }
 
@@ -126,6 +126,7 @@ function get_classes_list(subject){
  // return a dictionary of all classes a certain user is taking. {subject:[classnumber]}
 function get_user_class(userid){
 	check_uid(userid);
+	console.log(all_users_info[userid]);
 	return all_users_info[userid][Class];
 }
 
