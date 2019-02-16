@@ -115,7 +115,7 @@ function further_improve_ranking(uid){
 
 		let origin_corr = pList[i][1];
 		let other_stu_id = pList[i][0];
-        let other_uid = get_user_id(other_stu_id);
+        let other_uid = fetch_user_id(other_stu_id);
 
 		let answer_corr = correlation(get_user_answer(uid), get_user_answer(other_uid));
 		let new_corr = answer_corr * origin_corr;

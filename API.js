@@ -1,7 +1,7 @@
 /**
     get_user_name_uid(userId) // Given a userId, return the corresponding username
 	get_stu_id(userId) // return the stuId given a userId
-	get_user_id(stuId) // return the userId given a stuId
+	fetch_user_id(stuId) // return the userId given a stuId
 	get_user_name_stuid(stuId) // return the username of corresponding stuId
 	get_user_list() // return a dictionary of {studentid: username}
 	get_userid_list() // return a list of all uid
@@ -126,6 +126,7 @@ function get_classes_list(subject){
  // return a dictionary of all classes a certain user is taking. {subject:[classnumber]}
 function get_user_class(userid){
 	check_uid(userid);
+	console.log(all_users_info[userid]);
 	return all_users_info[userid][Class];
 }
 

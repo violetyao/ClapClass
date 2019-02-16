@@ -40,5 +40,5 @@ function login() {
     let password = $("#loginform > input[type=password]").val();
     signin_user(email, password);
     console.log("Signing In");
-    console.log("User ID: " + get_user_id() + " signed in")
+    console.log("User ID: " + fetch_user_id() + " signed in")
 }
