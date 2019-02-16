@@ -26,7 +26,7 @@ Collect info about user study philosophy
 Simple interface to select what class 
 
 ### Dashboard
-Dashboard page to guide user enter find partner/room/calendar
+Dashboard page to guide users to enter group matching/my groups.
 
 ### Partner Page
 A row of checkboxes at the top. Each cooresponds to a class which you haven't have a study group for. Select multiple boxes to indicate which classes you want a study group.
