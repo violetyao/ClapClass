@@ -75,9 +75,15 @@ function complete_ranking_users(users) {
         pList = rank_users(users[i], users);
         pList.shift(); // delte the first entry, which is itself
         users[i].preference = pList;
-        // TODO: store back to database
+		users[i].write();        
     }
 }
+
+/*
+* u: user type
+* Further improve the preference lists for u
+* Return the list, does not update directly to user
+*/
 
 function further_improve_ranking(u, users){
 	pList = u.preference;
@@ -85,6 +91,7 @@ function further_improve_ranking(u, users){
 	var queue = new PriorityQueue(comp);
 
 	for (i = 0; i < pList.length; i ++){
+
 		var origin_corr = pList[i][1];
 		var other_id = pList[i][0];
 
@@ -100,12 +107,16 @@ function further_improve_ranking(u, users){
 	return newList;
 }
 
+/*
+* Use f_i_r to improve everyone
+*/
+
 function further_improve_everyone(users){
 	for (i =0; i < users.length; i ++){
 		var u = users[i];
 		var new_list = further_improve_ranking(u, users);
 		u.preference = new_list;
-		// TODO: update to database!!!
+		u.write();
 	}
 }
 
