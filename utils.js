@@ -2,11 +2,11 @@
 
 const suggestionMax = 100;
 const improvedSuggestionMax = 20;
+
 /*
 * v1, v2 are two list of numbers
 * Assume v1, v2 belong to the same course subject
 */
-
 function correlation(v1, v2) {
     let sum = 0;
     for (i = 0; i < v2.length; i++) {
@@ -40,20 +40,24 @@ function comp(t1, t2){
 }
 
 /*
-* @param u: user class
-* @param candidates: a list of users
+* @param uid: a user id
+* @param all_user_id: a list of user_id
 * return a list of preferences [[id, val], [id, val], ...]
 */
-function rank_users(u, candidates){
+function rank_users(uid, all_user_id){
 	let queue = new PriorityQueue(comp);
-	for (i = 0; i < candidates.length; i++) {
-		let cand = candidates[i];
-		let curr_correlation = computeUserCorrelation(u.uid, cand.uid);
-		let data_pair = [cand.uid, curr_correlation];
-		queue.push(data_pair);
+	for (i = 0; i < all_user_id.length; i++) {
+		let cand_id = all_user_id[i];
+
+		if (cand_id !== uid) { // avoid compareing to itself
+            let curr_correlation = computeUserCorrelation(uid, cand_id);
+            let data_pair = [cand_id, curr_correlation];
+            queue.push(data_pair);
+        }
 	}
-	let result = new Array(candidates.length);
-	let l = Math.min(candidates.length, suggestionMax);
+	// let result = new Array(candidates.length);
+	let l = Math.min(all_user_id.length, suggestionMax);
+	let result = new Array(l);
 	for (i = 0; i < l ; i++) {
 		result[l - i - 1] = queue.pop()[0];
 	}
@@ -74,14 +78,18 @@ return a list of list of indices
 for each user in the user_lists, find his preference ranking list (using rank_users())
 and then we combine all these ranking lists into a big list and return it
 */
-
-function complete_ranking_users(users) {
-    for (i = 0; i < users.length; i++) {
-        pList = rank_users(users[i], users);
-        pList.shift(); // delte the first entry, which is itself
-        users[i].preference = pList;
-		users[i].write();        
+function complete_ranking_users(all_user_id) {
+    for (i = 0; i < all_user_id.length; i++) {
+        pList = rank_users(all_user_id[i], all_user_id);
+        // all_user_id[i].preference = pList;
+		// all_user_id[i].write();
+        // TODO: update user preference
     }
+}
+
+function firstWaveSuggestion(){
+    let user_ids = get_all_user_id();
+    complete_ranking_users(user_ids);
 }
 
 /*
@@ -90,7 +98,7 @@ function complete_ranking_users(users) {
 * Return the list, does not update directly to user
 */
 
-function further_improve_ranking(u, users){
+function further_improve_ranking(uid, user_ids){
 	let pList = u.preference;
 	let l = Math.min(pList.length, improvedSuggestionMax);
 
@@ -114,6 +122,8 @@ function further_improve_ranking(u, users){
 	return newList;
 }
 
+
+
 /*
 * Use f_i_r to improve everyone
 */
@@ -121,10 +131,16 @@ function further_improve_ranking(u, users){
 function further_improve_everyone(users){
 	for (i =0; i < users.length; i ++){
 		let u = users[i];
-		// let new_list = further_improve_ranking(u, users);
-		u.preference = further_improve_ranking(u, users);
-		u.write();
+		let new_list = further_improve_ranking(u, users);
+		// u.preference = further_improve_ranking(u, users);
+		// u.write();
+        // TODO: update user preference
 	}
+}
+
+function secondWaveSuggestion() {
+    let user_ids = get_all_user_id();
+    further_improve_everyone(user_ids);
 }
 
 
