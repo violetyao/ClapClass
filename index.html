@@ -1,6 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
+	
+	<!-- Firebase App is always required and must be first -->
+	<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-app.js"></script>
+
+	<!-- Add additional services that you want to use -->
+	<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-firestore.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-messaging.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-functions.js"></script>
+    <script type="text/javascript" src="./API.js"></script>
+	<title></title>
+</head>
+<body onload="fetch_all_users()">
+	<input type="button" name="fetchdata" value="fetchdata" onclick="fetch_all_users()">
+	<input type="button" value = "fetch_user_course" onclick = "fetch_user_major('Frank')">
+=======
     <!-- Firebase App is always required and must be first -->
     <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-app.js"></script>
 
@@ -37,5 +55,6 @@
         })
     }
 </script>
+>>>>>>> c3aada0cbbe9b912b30a7d940983fd871e4ee49b
 </body>
 </html>
