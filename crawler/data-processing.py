@@ -39,3 +39,14 @@ def getStartTime(data):
 
 def getEndTime(data):
     return _getDate(data)[2]
+
+def tester():
+    next_line = f.readline().rstrip()
+    while next_line:
+        data = json.loads(next_line)
+        print(getSubjectName(data) + " " + getCourseNumber(data) + " " + getSection(data))
+        print(getDisplayName(data))
+        print(getLocation(data))
+        print(getDays(data) + " " + getStartTime(data) + " " + getEndTime(data))
+        next_line = f.readline().rstrip()
+
