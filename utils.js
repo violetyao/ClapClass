@@ -51,7 +51,7 @@ function rank_users(uid, all_user_id){
 
 		if (cand_id !== uid) { // avoid compareing to itself
             let curr_correlation = computeUserCorrelation(uid, cand_id);
-            let data_pair = [cand_id, curr_correlation];
+            let data_pair = [get_stu_id(cand_id), curr_correlation];
             queue.push(data_pair);
         }
 	}
@@ -98,7 +98,7 @@ function firstWaveSuggestion(){
 * Return the list, does not update directly to user
 */
 
-function further_improve_ranking(uid, user_ids){
+function further_improve_ranking(uid){
 	let pList = u.preference;
 	let l = Math.min(pList.length, improvedSuggestionMax);
 
@@ -108,13 +108,12 @@ function further_improve_ranking(uid, user_ids){
 	for (i = 0; i < pList.length; i ++){
 
 		let origin_corr = pList[i][1];
-		let other_id = pList[i][0];
+		let other_stu_id = pList[i][0];
+        let other_uid = get_user_id(other_stu_id);
 
-		let ux = users[other_id];
-
-		let answer_corr = correlation(u.answers, ux.answers);
+		let answer_corr = correlation(get_answer_by_id(uid), get_answer_by_id(other_uid));
 		let new_corr = answer_corr * origin_corr;
-		queue.push([other_id, new_corr]);
+		queue.push([other_stu_id, new_corr]);
 	}
 	for (i = 0; i < l ; i++) {
 		newList[l - i - 1] = queue.pop()[0];
@@ -131,7 +130,7 @@ function further_improve_ranking(uid, user_ids){
 function further_improve_everyone(users){
 	for (i =0; i < users.length; i ++){
 		let u = users[i];
-		let new_list = further_improve_ranking(u, users);
+		let new_list = further_improve_ranking(u);
 		// u.preference = further_improve_ranking(u, users);
 		// u.write();
         // TODO: update user preference
