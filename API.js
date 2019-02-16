@@ -23,7 +23,7 @@ var config = {
 	storageBucket: "treehack-e780a.appspot.com",
 	messagingSenderId: "22555346969",
 };
-firebase.initializeApp(config)
+firebase.initializeApp(config);
 
 //Global Variable: Id : All id objects
 //                 All_users_info: all users objects
@@ -40,7 +40,7 @@ function fetch_all_users() {
   		all_classes_info = snapshot.val();
   	})
   	firebase.database().ref('UserId').on('value', function(snapshot){
-  		Id = snapshot.val();
+  		allId = snapshot.val();
   	})
 }
 
