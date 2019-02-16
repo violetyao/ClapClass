@@ -1,6 +1,9 @@
 class user {
     name; // name of user
     classes; // the classes this user is taking
+    schedule;
+    id;
+    preference;
     constructor(name, classes, schedule, id) {
         this.name = name;
         this.classes = classes;
@@ -8,8 +11,8 @@ class user {
         this.id = id;
     }
 
-    get userVector() {
-        return this.classes;
-    }
+    // get userVector() {
+    //     return this.classes;
+    // }
 
 }
