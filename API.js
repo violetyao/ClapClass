@@ -6,9 +6,9 @@
 	get_userId_list() // return a dictionary of {userid : studentid}
 	get_subject_list() // return a list of all subjects
 	get_classes_list(suject) // return a list of all classes of a certain subject
-	get_user_class(user) // return a list of all classes a certain user is taking
+	get_user_class(userid) // return a list of all classes a certain user is taking
 	get_class_user(class) // return all users of a certain class
-	get_same_class(user1, user2) // return a list of all the same classes of user1, user2
+	get_same_class(userid1, userid2) // return a list of all the same classes of userid1, userid2
 	get_same_user(class1, class2) // return a list of all the same users of two classes
 */
 
@@ -44,7 +44,13 @@ function get_user_name(userid) {
 
 }
 
-function get_Stu_Id
+function get_stu_id(userid) {
+
+}
+
+function get_user_name(stuid) {}
+function get_user_list(){}
+function get
 //Return a list of all users
 function get_user_list() {
 	var user_list = [];
