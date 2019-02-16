@@ -73,7 +73,7 @@ function get_user_id(stuid) {
 // Given a userId, return the corresponding username
 function get_user_name_uid(uid) {
 	check_uid(uid);
-	return all_users_info[uid][Name];
+	return all_users_info[uid]["Name"];
 }
 
 // return the username of corresponding stuId
@@ -126,13 +126,13 @@ function get_classes_list(subject){
  // return a dictionary of all classes a certain user is taking. {subject:[classnumber]}
 function get_user_class(userid){
 	check_uid(userid);
-	return all_users_info[userid][Class];
+	return all_users_info[userid]["Class"];
 }
 
 // return all users of a certain class
 function get_class_user(class1){
 	for (var subject in class1) {
-		return all_subjects_info[subject][class1[subject]][students]
+		return all_subjects_info[subject][class1[subject]]["students"]
 	}
 }
 
@@ -170,15 +170,15 @@ function get_same_user(class1, class2){
 // return a dictionary of the preference of certain user {uid：rank}
 function get_user_preference(uid){
 	check_uid(uid);
-	return all_users_preference[uid][Preference];
+	return all_users_preference[uid]["Preference"];
 } 
 
 // return answer of the survey
 function get_user_answer(uid){
 	check_uid(uid);
 	var answers = [];
-	for (var index in all_users_info[uid][Answer]) {
-		answers.push(all_users_info[uid][Answer][index]);
+	for (var index in all_users_info[uid]["Answer"]) {
+		answers.push(all_users_info[uid]["Answer"][index]);
 	}
 	return answers;
 } 
