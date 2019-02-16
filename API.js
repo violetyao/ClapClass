@@ -1,3 +1,17 @@
+/**
+    get_user_name(userId) // Given a userId, return the corresponding username
+	get_stu_id(userId) // return the stuId given a userId
+	get_user_name(stuId) // return the username of corresponding stuId
+	get_user_list() // return a dictionary of {studentid: username}
+	get_userId_list() // return a dictionary of {userid : studentid}
+	get_subject_list() // return a list of all subjects
+	get_classes_list(suject) // return a list of all classes of a certain subject
+	get_user_class(userid) // return a list of all classes a certain user is taking
+	get_class_user(class) // return all users of a certain class
+	get_same_class(userid1, userid2) // return a list of all the same classes of userid1, userid2
+	get_same_user(class1, class2) // return a list of all the same users of two classes
+*/
+
 var config = {
 	apiKey: "AIzaSyAQFwlKzWWjfxtw6-7QSLbcgtkmoXuMiq4",
 	authDomain: "treehack-e780a.firebaseapp.com",
@@ -6,19 +20,37 @@ var config = {
 	storageBucket: "treehack-e780a.appspot.com",
 	messagingSenderId: "22555346969",
 };
-firebase.initializeApp(config);
+firebase.initializeApp(config)；
 
+//Global Variable: Id : All id objects
+//                 All_users_info: all users objects
+//                 All_classes_info: all classes objects
+var Id;
 var all_users_info;
-var all_subject_info;
+var all_classes_info;
 
 function fetch_all_users() {
-  	firebase.database().ref('Username').on('value', function(snapshot){
+  	firebase.database().ref('AllUsers').on('value', function(snapshot){
     	all_users_info = snapshot.val();
   	})
-  	firebase.database().ref('Subject').on('value', function(snapshot){
-  		all_subjects = snapshot.val();
+  	firebase.database().ref('Classes').on('value', function(snapshot){
+  		all_classes_info = snapshot.val();
+  	})
+  	firebase.database().ref('UserId').on('value', function(snapshot){
+  		Id = snapshot.val();
   	})
 }
+function get_user_name(userid) {
+
+}
+
+function get_stu_id(userid) {
+
+}
+
+function get_user_name(stuid) {}
+function get_user_list(){}
+function get
 //Return a list of all users
 function get_user_list() {
 	var user_list = [];
