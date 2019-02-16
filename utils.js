@@ -19,7 +19,6 @@ function matrix_correlation(m1, m2){
 	}
 }
 
-function add()
 
 /*
 return a list of indices of candidates, from the most correlated to the least correlated
@@ -30,5 +29,15 @@ candidates is 	[
 				]
 */
 function rank_users(user_list, candidates){
+
+}
+
+/*
+return a list of list of indices
+for each user in the user_lists, find his preferance ranking list (using rank_users())
+and then we combine all these ranking lists into a big list and return it
+*/
+
+function complete_ranking_users(user_lists){
 
 }
