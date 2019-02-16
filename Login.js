@@ -3,22 +3,46 @@ function print_user_token() {
 
 }
 
+function test_user_boxing() {
+    let sid = document.getElementById("sid").value;
+    let answers_text = document.getElementById("answers").value;
+    let answers = {};
+    let answer_pairs = answers_text.split(" ");
+    answer_pairs.forEach(function (pair) {
+        pair = pair.split(":");
+        answers[pair[0]] = pair[1];
+    });
+    let classes = {};
+    let classes_text = document.getElementById("classes").value.split(";");
+    classes_text.forEach(function (_class) {
+        _class = _class.split(" ");
+        classes[_class[0]] = _class[1];
+    });
+    let name = document.getElementById("name").value;
+    let preference = {"27056890": 2};
+    let uid = get_user_id();
+    u = new User(sid, answers, classes, name, preference, uid);
+}
+
 function get_sid() {
-    var user_token = get_user_info()[3];
+    let user_token = get_user_info()[3];
     return user_token_to_sid(user_token);
 }
 
 function user_token_to_sid(token){
     firebase.database().ref('UserId').on('value', function (snapshot) {
         data = snapshot.val();
-    };
+    });
     return data[token]
 }
 
+function get_user_id() {
+    return get_user_info()[3]
+}
 
 function get_user_info() {
-    var user = firebase.auth().currentUser;
-    var name, email, photoUrl, uid, userToken, emailVerified;
+    let user = firebase.auth().currentUser;
+    let name, email, photoUrl, uid, userToken, emailVerified;
 
     if (user != null) {
         name = user.displayName;
@@ -31,7 +55,7 @@ function get_user_info() {
                          // you have one. Use User.getToken() instead.
         return [name, email, userToken, uid];
     }
-    console.log("User not found")
+    console.log("User not found");
     return null;
 
 }
@@ -39,23 +63,23 @@ function get_user_info() {
 function create_user(email, password) {
     firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
         // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
+        let errorCode = error.code;
+        let errorMessage = error.message;
         console.log(errorCode);
         console.log(errorMessage);
     });
 }
 
 function button_signup() {
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
     create_user(email, password);
     console.log("Signing Up")
 }
 
 function button_signin() {
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
     signin_user(email, password);
     console.log("Logging In")
 }
@@ -63,8 +87,8 @@ function button_signin() {
 function signin_user(email, password) {
     firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
         // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
+        let errorCode = error.code;
+        let errorMessage = error.message;
         console.log(errorMessage)
     });
 }

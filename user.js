@@ -1,27 +1,21 @@
-class user {
-    sid;
-    answers;
-    classes;
-    name;
-    preferences;
-
-    constructor(sid, answers, classes, name, preferences) {
+class User {
+    constructor(sid, answers, classes, name, preference, uid) {
         this.sid = sid;
         this.classes = classes;
         this.answers = answers;
         this.name = name;
-        this.preferences = preferences;
+        this.preference = preference;
+        this.uid = uid;
         this.write();
     }
 
     write() {
-        firebase.database().ref("AllUsers").set({
-            sid: {
-                "Answer": this.answers,
-                "Class": this.classes,
-                "Name": this.name,
-                "Preference": this.preferences
-            }
+        firebase.database().ref("AllUsers/" + this.uid).set({
+            "Answer": this.answers,
+            "Class": this.classes,
+            "Name": this.name,
+            "Preference": this.preference,
+            "SID": this.sid
         })
     }
 
