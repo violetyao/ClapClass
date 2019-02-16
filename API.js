@@ -6,17 +6,24 @@ var config = {
 	storageBucket: "treehack-e780a.appspot.com",
 	messagingSenderId: "22555346969",
 };
-firebase.initializeApp(config);
+firebase.initializeApp(config)；
 
+//Global Variable: Id : All id objects
+//                 All_users_info: all users objects
+//                 All_classes_info: all classes objects
+var Id;
 var all_users_info;
-var all_subject_info;
+var all_classes_info;
 
 function fetch_all_users() {
-  	firebase.database().ref('Username').on('value', function(snapshot){
+  	firebase.database().ref('AllUsers').on('value', function(snapshot){
     	all_users_info = snapshot.val();
   	})
-  	firebase.database().ref('Subject').on('value', function(snapshot){
-  		all_subjects = snapshot.val();
+  	firebase.database().ref('Classes').on('value', function(snapshot){
+  		all_classes_info = snapshot.val();
+  	})
+  	firebase.database().ref('UserId').on('value', function(snapshot){
+  		Id = snapshot.val();
   	})
 }
 //Return a list of all users
