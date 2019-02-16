@@ -42,7 +42,7 @@ function rank_users(user_list, candidates){
 		queue.push(data_pair);
 	}
 	var result = new Array(candidates.length);
-	for (i = 0; i < candidates.length; i++) {
+	for (i = 0; i < Math.min(candidates.length, 100) ; i++) {
 		result[n - i - 1] = queue.pop()[0]; 
 	}
 	return result;
