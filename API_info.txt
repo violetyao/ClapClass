@@ -12,3 +12,4 @@ get_same_class(userid1, userid2) // return a list of all the same classes of use
 get_same_user(class1, class2) // return a list of all the same users of two classes
 get_user_preference(uid) // return a dictionary of the preference of certain user {uid:rank}
 get_user_answer(uid) // return answer of the survey
+
