@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Movie App</title>
+	<link rel="stylesheet" href="scss/components.css">
+	<link rel="stylesheet" href="scss/app.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script src="js/main.js"></script>
+	<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+</head>
+<body>
+
+	<nav>
+		<div class="container flex align-center">
+			<div style="overflow: hidden">
+				<div class="float-up anim logo"></div>
+			</div>
+			<ul class="flex align-center">
+				<li class="anim"><a href="">Classes</a></li>
+				<li class="anim"><a href="">Learn</a></li>
+				<li class="anim"><a href="">Schedule</a></li>
+				<li class="anim"><a href="" class="btn">Login</a></li>
+
+				<div id="id01" class="modal">
+						<span onclick="document.getElementById('id01').style.display='none'" 
+					  class="close" title="Close Modal">&times;</span>
+					  
+						<!-- Modal Content -->
+						<form class="modal-content animate" action="/action_page.php">
+						  <div class="imgcontainer">
+							<img src="img_avatar2.png" alt="Avatar" class="avatar">
+						  </div>
+					  
+						  <div class="container">
+							<label for="uname"><b>Username</b></label>
+							<input type="text" placeholder="Enter Username" name="uname" required>
+					  
+							<label for="psw"><b>Password</b></label>
+							<input type="password" placeholder="Enter Password" name="psw" required>
+					  
+							<button type="submit">Login</button>
+							<label>
+							  <input type="checkbox" checked="checked" name="remember"> Remember me
+							</label>
+						  </div>
+					  
+						  <div class="container" style="background-color:#f1f1f1">
+							<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+							<span class="psw">Forgot <a href="#">password?</a></span>
+						  </div>
+						</form>
+					  </div>
+	
+				<div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'" 
+class="close" title="Close Modal">&times;</span>
+
+  <!-- Modal Content -->
+  <form class="modal-content animate" action="/action_page.php">
+    <div class="imgcontainer">
+      <img src="img_avatar2.png" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+
+      <button type="submit">Login</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
+				<li class="anim"><a href="" class="btn">Sign up</a></li>
+				
+			</ul>
+		</div>
+	</nav>
+
+	<div class="site-wrapper flex align-center">
+		<img src="img/Untitled-1.png" class="anim" alt="">
+		<div class="container">
+			<div class="site-title-text">
+				<div style="margin-top: 10px;"></div>
+				<div class="text-to-span">
+					<h1>Study together</h1>
+				</div>
+				<div class="text-to-span">
+					<h1>New friends and more</h1>
+				</div>
+				<div style="margin-bottom: 16px;"></div>
+				<div>
+					<p class="anim float-up" style="transition-delay: 0.5s;">A smart platform to find you study buddies</p>
+				</div>
+				<div>
+					<p class="anim float-up" style="transition-delay: 0.6s;">meet people with similiar learning philosphy</p>
+				</div>
+				<div>
+					<p class="anim float-up" style="transition-delay: 7s;">take notes and meet easily</p>
+				</div>
+				<div style="margin-bottom: 50px;"></div>
+
+			</div>
+		</div>
+		<div class="phones">
+			<img src="img/iPhone 7.png" class="anim iphone" alt="">
+			<img src="img/l5.png" class="anim l5" alt="">
+		</div>
+	</div>
+
+<!-- Button to open the modal login form -->
+<button onclick="document.getElementById('id01').style.display='block'">Login</button>
+
+</body>
+</html>

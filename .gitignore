@@ -90,3 +90,6 @@ lerna-debug.log
 .DS_Store
 Thumbs.db
 
+# Crawler
+crawler/class-data-sp19
+
