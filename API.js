@@ -40,7 +40,7 @@ function fetch_all_users() {
   		all_classes_info = snapshot.val();
   	})
   	firebase.database().ref('UserId').on('value', function(snapshot){
-  		Id = snapshot.val();
+  		allId = snapshot.val();
   	})
 }
 
