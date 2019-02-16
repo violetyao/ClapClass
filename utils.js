@@ -15,8 +15,9 @@ function correlation(v1, v2){
 function matrix_correlation(m1, m2){
 	cor = 0
 	for (i = 0; i < m1.length; i ++){
-		cor += correlation[m1[]]
+		cor += correlation(m1[i], m2[i]);
 	}
+	return cor;
 }
 
 
