@@ -50,3 +50,29 @@ def tester():
         print(getDays(data) + " " + getStartTime(data) + " " + getEndTime(data))
         next_line = f.readline().rstrip()
 
+output = {}
+next_line = f.readline().rstrip()
+while next_line:
+    data = json.loads(next_line)
+    subjectName = getSubjectName(data)
+    courseNumber = getCourseNumber(data)
+
+    # Create dictionary if does not exist
+    if subjectName not in output:
+        output[subjectName] = {}
+
+    output[subjectName][courseNumber] = {
+        "location": getLocation(data),
+        "startTime": getStartTime(data),
+        "endTime": getEndTime(data),
+        "days": getDays(data),
+        "students": [],
+        "displayName": getDisplayName(data),
+        "section": getSection(data),
+    }
+    next_line = f.readline().rstrip()
+
+fout = open(filename + ".json", "w")
+fout.write(json.dumps(output))
+fout.close()
+f.close()
