@@ -5,30 +5,30 @@ A smart platform to learn together
 
 
 
-##Interface
+## Interface
 Home
 Login/Signup
 Dashboard
 Find buddy
 
-###Home
+### Home
 Finished. Simple Welcome page with login button
 
-###Login/Signup
+### Login/Signup
 Need backend. As titled
 
-##Survey
+## Survey
 Collect info about user study philosophy
 
 ## TODO
 
-###Add Class
+### Add Class
 Simple interface to select what class 
 
-###Dashboard
+### Dashboard
 Dashboard page to guide user enter find partner/room/calendar
 
-###Partner Page
+### Partner Page
 A row of checkboxes at the top. Each cooresponds to a class which you haven't have a study group for. Select multiple boxes to indicate which classes you want a study group.
 
 A list of recommendations below the checkboxes. These are recommendations of viable plans.(each plan is a combination of several groups, together cover all the classes checked). Beside each plan you can apply
