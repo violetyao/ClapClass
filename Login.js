@@ -3,6 +3,18 @@ function print_user_token() {
 
 }
 
+function get_sid() {
+    var user_token = get_user_info()[3];
+    return user_token_to_sid(user_token);
+}
+
+function user_token_to_sid(token){
+    firebase.database().ref('UserId').on('value', function (snapshot) {
+        data = snapshot.val();
+    };
+    return data[token]
+}
+
 
 function get_user_info() {
     var user = firebase.auth().currentUser;

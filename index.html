@@ -30,10 +30,10 @@
     firebase.initializeApp(config);
 
     function fetch() {
-        firebase.database().ref('Subject').on('value', function (snapshot) {
+        firebase.database().ref('AllUsers').on('value', function (snapshot) {
             data = snapshot.val();
             console.log(data);
-            console.log(typeof (data));
+            console.log(data["3033669006"])
         })
     }
 </script>

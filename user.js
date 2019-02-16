@@ -1,20 +1,28 @@
 class user {
-    name; // name of user
-    classes; // the classes this user is taking
-    schedule;
-    id;
-    preference;
+    sid;
     answers;
-    constructor(name, classes, schedule, id, answers) {
-        this.name = name;
+    classes;
+    name;
+    preferences;
+
+    constructor(sid, answers, classes, name, preferences) {
+        this.sid = sid;
         this.classes = classes;
-        this.schedule = schedule;
-        this.id = id;
         this.answers = answers;
+        this.name = name;
+        this.preferences = preferences;
+        this.write();
     }
 
-    // get userVector() {
-    //     return this.classes;
-    // }
+    write() {
+        firebase.database().ref("AllUsers").set({
+            sid: {
+                "Answer": this.answers,
+                "Class": this.classes,
+                "Name": this.name,
+                "Preference": this.preferences
+            }
+        })
+    }
 
 }
