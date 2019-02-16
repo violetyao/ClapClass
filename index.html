@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
 	
 	<!-- Firebase App is always required and must be first -->
 	<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-app.js"></script>
@@ -17,5 +18,43 @@
 <body onload="fetch_all_users()">
 	<input type="button" name="fetchdata" value="fetchdata" onclick="fetch_all_users()">
 	<input type="button" value = "fetch_user_course" onclick = "fetch_user_major('Frank')">
+=======
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-app.js"></script>
+
+    <!-- Add additional services that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-functions.js"></script>
+    <script src="node_modules/mathjs" type="text/javascript"></script>
+    <script src="utils.js" type="text/javascript"></script>
+    <title></title>
+</head>
+<body>
+<input type="button" name="fetchdata" value="fetchdata" onclick="fetch()">
+<script>
+    // Initialize Firebase
+    // TODO: Replace with your project's customized code snippet
+    var config = {
+        apiKey: "AIzaSyAQFwlKzWWjfxtw6-7QSLbcgtkmoXuMiq4",
+        authDomain: "treehack-e780a.firebaseapp.com",
+        databaseURL: "https://treehack-e780a.firebaseio.com",
+        projectId: "treehack-e780a",
+        storageBucket: "treehack-e780a.appspot.com",
+        messagingSenderId: "22555346969",
+    };
+    firebase.initializeApp(config);
+
+    function fetch() {
+        firebase.database().ref('AllUsers').on('value', function (snapshot) {
+            data = snapshot.val();
+            console.log(data);
+            console.log(data["3033669006"])
+        })
+    }
+</script>
+>>>>>>> c3aada0cbbe9b912b30a7d940983fd871e4ee49b
 </body>
 </html>
