@@ -43,7 +43,7 @@ function rank_users(user_list, candidates){
 	}
 	var result = new Array(candidates.length);
 	for (i = 0; i < candidates.length; i++) {
-		result[n - i - 1] = queue.pop(); 
+		result[n - i - 1] = queue.pop()[0]; 
 	}
 	return result;
 }
