@@ -203,3 +203,14 @@ function get_total_number_of_groups() {
     })
 }
 
+function get_all_group_ids() {
+    firebase.database().ref("Group").once("value").then(function (snapshot) {
+        let group_data = snapshot;
+        keys = [];
+        group_data.forEach(function (group) {
+            keys.push(group.key);
+        });
+        return keys
+    })
+}
+
