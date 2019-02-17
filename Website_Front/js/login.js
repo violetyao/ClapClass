@@ -30,21 +30,21 @@ $(document).ready(function () {
 
 function signup() {
     if (fetch_user_id() != null) {
-        //window.open("../groupPage.html");
+        //window.open("./groupPage.html");
     }
 
     let name = $("#signupform > input[type=name]").val();
     let email = $("#signupform > input[type=email]").val();
     let password = $("#signupform > input[type=password]").val();
     let studentid = $("#signupform > input[type=SID]").val();
-    create_user(email, password, name, studentid, "../groupPage.html");
+    create_user(email, password, name, studentid, "./groupPage.html");
     console.log("Signing Up");
 }
 
 function login() {
     let email = $("#loginform > input[type=email]").val();
     let password = $("#loginform > input[type=password]").val();
-    signin_user(email, password, "../groupPage.html");
+    signin_user(email, password, "./groupPage.html");
     console.log("Signing In");
     console.log("User ID: " + fetch_user_id() + " signed in")
 }
