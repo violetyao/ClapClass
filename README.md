@@ -38,11 +38,13 @@ We used Firebase as our backend. We used vanilla JS and jQuery as our frontend. 
 ## Challenges we ran into
 Race conditions are hard to deal with. Hard to rewrite code to accommodate callback functions.
 
+It takes a bit time to learn new things.
+
 ## Accomplishments that we are proud of
 Crawled 6000+ classes in less than an hour.
 
 ## What we learned
-How to use firebase APIs and NoSQL databases in general.
+How to use different libraries, such as firebase APIs and NoSQL.
 
 Treehacks is better than Calhacks!
 
