@@ -25,13 +25,13 @@ Simple Welcome page with login/Signup button
 ### Survey
 Collect info about user study philosophy
 
-### How we built it
+## How we built it
 
-### Challenges we ran into
+## Challenges we ran into
 
-### Accomplishments that We are proud of
+## Accomplishments that We are proud of
 
-### What we learned
+## What we learned
 
 ## TODO
 
