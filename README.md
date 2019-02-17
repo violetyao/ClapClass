@@ -13,15 +13,25 @@ Home
 Login/Signup
 Dashboard
 Find buddy
+My Groups
+
+Interface design can be found at ClapClass_processon. 
 
 ### Home
-Finished. Simple Welcome page with login button
+Simple Welcome page with login/Signup button
 
 ### Login/Signup
-Need backend. As titled
 
-## Survey
+### Survey
 Collect info about user study philosophy
+
+### How we built it
+
+### Challenges we ran into
+
+### Accomplishments that I'm proud of
+
+### What I learned
 
 ## TODO
 
