@@ -6,6 +6,13 @@ We sit randomly in a large lecture hall, rush out when class ends. It’s never 
 ## Core objective
 Clapclass.io is a smart platform to help students find study buddies with similar study philosophy and schedule while providing a series of useful tools to boost cooperation in study groups.
 
+## Group Matching
+## Study Group Toolkit
+#### Co-note-taking
+Sharing lecture notes 
+#### When-to-Meet
+Easy Interface to schedule a meeting and reserve study room in Library.
+
 ## Interface
 Home
 Login/Signup
@@ -30,10 +37,10 @@ We used Firebase as our backend. We used vanilla JS and jQuery as our frontend. 
 Race conditions are hard to deal with. Hard to rewrite code to accommodate callback functions.
 
 ## Accomplishments that we are proud of
-Crawled 6000+ classes in less than an hour
+Crawled 6000+ classes in less than an hour.
 
 ## What we learned
-How to use firebase APIs and NoSQL databases in general
+How to use firebase APIs and NoSQL databases in general.
 
 Treehacks is better than Calhacks!
 
