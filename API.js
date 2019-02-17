@@ -33,7 +33,7 @@ firebase.initializeApp(config);
 var allId;
 var all_users_info;
 var all_classes_info;
-var all_groups=[];
+var all_groups;
 
 function fetch_all_users() {
     firebase.database().ref('AllUsers').on('value', function (snapshot) {
@@ -210,7 +210,7 @@ function get_total_number_of_groups() {
 function get_all_group_ids() {
     var groups = [];
     for (var index in all_groups) {
-    	groups.push(all_groups[index]);
+    	groups.push(index);
     }
     return groups;
 }
