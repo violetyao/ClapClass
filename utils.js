@@ -52,17 +52,18 @@ function rank_users(uid, all_user_id){
     console.log("all other users: ");
     console.log(all_user_id);
 	let queue = new PriorityQueue(comp);
-	for (i = 0; i < all_user_id.length; i++) {
+    let l = Math.min(all_user_id.length, suggestionMax);
+    for (i = 0; i < all_user_id.length; i++) {
 		let cand_id = all_user_id[i];
 
 		if (cand_id !== uid) { // avoid compareing to itself
             let curr_correlation = computeUserCorrelation(uid, cand_id);
             let data_pair = [get_stu_id(cand_id), curr_correlation];
             queue.push(data_pair);
+            l --;
         }
 	}
 	// let result = new Array(candidates.length);
-	let l = Math.min(all_user_id.length, suggestionMax);
 	let result = new Array(l);
 	for (i = 0; i < l ; i++) {
 		result[l - i - 1] = queue.pop();
@@ -148,6 +149,9 @@ function secondWaveSuggestion() {
     further_improve_everyone(user_ids);
 }
 
+
+/************************ Priority Queue ****************************/
+
 const topp = 0;
 const parent = i => ((i + 1) >>> 1) - 1;
 const left = i => (i << 1) + 1;
@@ -216,6 +220,59 @@ class PriorityQueue {
     }
 }
 
+
+/************************ group match by class *********************/
+
+/**
+ * Class Structure: {subject: <String>, courseNumber: <String>}
+ * Group Structure: {name: <String>, students: [user_id_1, user_id_2, ...], classes: [class_1, class_2, ...]}
+ */
+
+const groupSuggestionLength = 2;
+
+function class_match(c1, c2){
+    return (c1["subject"] === c2["subject"]) && (c1["courseNumber"] === c2["courseNumber"]);
+}
+
+function group_corr(user_id, group, classes){
+    let group_classes = group["classes"];
+    for (let c in classes){
+        if (! group_classes.some(e => class_match(e, c))){ // if my class is not contained in the group, stop
+            return 0;
+        }
+    }
+    let group_students = group['students']; // list of id
+    let corr = 0; // The final corr should be > 0 since the students should have common classes to join
+    for (let sid in group_students){
+        // if (sid != null){
+        corr += computeUserCorrelation(sid, user_id)
+        // }
+    }
+    return corr / group_students.length;
+}
+
+
+
+function match_groups(user_id, classes){
+    // let group_num = get_total_number_of_groups();
+    let all_group_ids = get_all_group_ids();
+    let l = Math.min(groupSuggestionLength, all_group_ids.length);
+    let groups = new Array(l);
+    let fringe = new PriorityQueue(comp);
+    for (let i = 0; i < all_group_ids.length; i ++){
+        let id = all_group_ids[i];
+        let group = get_group_by_id(id);
+        let g_corr = group_corr(user_id, group, classes);
+        if (g_corr !== 0){ // ignoring groups that don't fit
+            group["id"] = id;
+            fringe.push([group, g_corr]);
+        }
+    }
+    for (let i = 0; i < l; i ++){
+        groups[l - i - 1] = fringe.pop()[0];
+    }
+    return groups;
+}
 
 
 
