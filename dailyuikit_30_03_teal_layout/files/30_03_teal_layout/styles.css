@@ -1,12 +1,13 @@
 ﻿body {
-  margin:0px;
-  background-color:rgba(242, 242, 242, 1);
+  margin:-420px;
+  background-color:rgba(76, 181, 174, 1); 
   background-image:none;
   position:relative;
-  left:-0px;
-  width:1200px;
-  margin-left:auto;
-  margin-right:auto;
+  top:50%;
+  left:50%;
+  width:1600px;
+  margin-left:-600px;
+  margin-top:auto;
   text-align:left;
 }
 #base {
