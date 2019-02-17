@@ -104,7 +104,7 @@ function button_signin() {
 function signin_user(email, password, url = null) {
     firebase.auth().signInWithEmailAndPassword(email, password).then(function () {
         if (url != null) {
-            window.open(url);
+            window.open(url, "_self");
         }
     }).catch(function (error) {
         // Handle Errors here.
