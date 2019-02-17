@@ -8,6 +8,11 @@ Clapclass.io is a smart platform to help students find study buddies with simila
 
 ### Group Matching
 Aside from current course load, ClapClass asks users to fill out a work philosophy survey, including attitudes towards extra credits, preferred studying time, preference over pulling an all nighter or planning tasks for several days, etc. Based on what classes users are taking and their respective study habits, we match a user with several recommended study groups. Cliking on different groups’ info pages, user will decide which study group to join.
+#### Partner Page
+A row of checkboxes at the top. Each cooresponds to a class which you haven't have a study group for. Select multiple boxes to indicate which classes you want a study group.
+
+A list of recommendations below the checkboxes. These are recommendations of viable plans.(each plan is a combination of several groups, together cover all the classes checked). Beside each plan you can apply
+
 
 ### Study Group Toolkit
 #### Co-note-taking
@@ -19,12 +24,11 @@ Easy Interface to schedule a meeting and reserve study room in Library.
 ![alt text](https://github.com/violetyao/treehacks/blob/master/sketch/ClapClass_processon%201.25%20am.jpg)
 
 ## How we built it
-We used Firebase as our backend. We used vanilla JS and jQuery as our frontend. We also used python packages including beautifulsoup, requests, and json to acquire and process class information.
-We used HTML, JavaScript, and CSS as our frontend. 
+We used Firebase as our backend. We used vanilla JS and jQuery as our frontend. We also used python packages including beautifulsoup, requests, and json to acquire and process class information. 
 
 ## Challenges we ran into
+We are totally new in web development. It took us a while to pick up things.
 Race conditions are hard to deal with. Hard to rewrite code to accommodate callback functions.
-We are not experienced in web development. It took us a while to learn new things.
 
 ## Accomplishments that we are proud of
 Crawled 6000+ classes in less than an hour.
@@ -32,29 +36,10 @@ Crawled 6000+ classes in less than an hour.
 ## What we learned
 How to use different libraries, such as firebase APIs and NoSQL, and Dreamweaver is a great tool to visualize and locate code!
 
-Treehacks is better than Calhacks!
-
-Boyuan doesn't need sleep. :)
+## What's next for ClapClass
 
 
-## TODO
-
-### Add Class
-Simple interface to select what class 
-
-### Dashboard
-Partially working. Framework completed, need to put things inside.
-Dashboard page to guide users to enter Group-Matching/My Groups.
-
-Group-Matching leads to Partner Page. 
-My Groups leads to lecture notes sharing, when2meet, etc.
-
-### Partner Page
-A row of checkboxes at the top. Each cooresponds to a class which you haven't have a study group for. Select multiple boxes to indicate which classes you want a study group.
-
-A list of recommendations below the checkboxes. These are recommendations of viable plans.(each plan is a combination of several groups, together cover all the classes checked). Beside each plan you can apply
-
-##API
+## API
 get_user_name(userid) // Given a userId, return the corresponding username
 get_stu_id(userid) // return the stuId given a userId
 get_user_name(stuid) // return the username of corresponding stuId
@@ -66,4 +51,3 @@ get_user_class(userid) // return a list of all classes a certain userid is takin
 get_class_user(class) // return all users of a certain class, return type:stuid
 get_same_class(userid1, userid2) // return a list of all the same classes of userid1, userid2
 get_same_user(class1, class2) // return a list of all the same users of two classes
-
