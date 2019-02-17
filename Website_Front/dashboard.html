@@ -16,6 +16,19 @@
     <script src="./js/document.js"></script>
     <script src="./js/prototypePost.js"></script>
     <script src="./js/data.js"></script>
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-app.js"></script>
+    <!-- Add additional services that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-functions.js"></script>
+    <script src="./js/API.js"></script>
+    <script src="./js/user.js"></script>
+    <script src="./js/Login.js" type="text/javascript"></script>
+    <script src="./js/utils.js" type="text/javascript"></script>
+    <script src="./js/match.js" type="text/javascript"></script>
     <!-- <script type="text/javascript">
       $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
       $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
@@ -298,35 +311,35 @@
       </div>
 
       <!-- Unnamed (Group) -->
-      <!-- <div id="u107" class="ax_default" data-width="190" data-height="40"> -->
+      <div id="u107" class="ax_default" data-width="190" data-height="40">
 
         <!-- menu (Rectangle) -->
-        <!-- <div id="u108" class="ax_default heading_1" data-label="menu">
-          <div id="u108_div" class=""></div> -->
+        <div id="u108" class="ax_default heading_1" data-label="menu">
+          <div id="u108_div" class=""></div>
           <!-- Unnamed () -->
-          <!-- <div id="u109" class="text">
-            <p><span>CS61B</span></p>
+          <div id="u109" class="text">
+            <p><span>Change Class</span></p>
           </div>
-        </div> -->
+        </div>
 
         <!-- icon-proj (Image) -->
-        <!-- <div id="u110" class="ax_default image" data-label="icon-proj">
-          <img id="u110_img" class="img " src="img/dashboard/icon-proj_u110.png"/> -->
+        <div id="u110" class="ax_default image" data-label="icon-proj">
+          <img id="u110_img" class="img " src="img/dashboard/icon-proj_u110.png"/>
           <!-- Unnamed () -->
-          <!-- <div id="u111" class="text" style="display:none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div> -->
-
-        <!-- undermenu (Rectangle) -->
-        <!-- <div id="u112" class="ax_default box_2" data-label="undermenu" selectiongroup="left-menu">
-          <img id="u112_img" class="img " src="img/dashboard/undermenu_u75.png"/> -->
-          <!-- Unnamed () -->
-          <!-- <div id="u113" class="text" style="display:none; visibility: hidden">
+          <div id="u111" class="text" style="display:none; visibility: hidden">
             <p><span></span></p>
           </div>
         </div>
-      </div> -->
+
+        <!-- undermenu (Rectangle) -->
+        <div id="u112" class="ax_default box_2" data-label="undermenu" selectiongroup="left-menu">
+          <img id="u112_img" class="img " src="img/dashboard/undermenu_u75.png"/>
+          <!-- Unnamed () -->
+          <div id="u113" class="text" style="display:none; visibility: hidden">
+            <p><span></span></p>
+          </div>
+        </div>
+      </div>
 
       <!-- Unnamed (Group) -->
       <div id="u114" class="ax_default" data-width="190" data-height="40">
@@ -336,7 +349,7 @@
           <div id="u115_div" class=""></div>
           <!-- Unnamed () -->
           <div id="u116" class="text">
-            <p><span>Add Class</span></p>
+            <p><span>Matching</span></p>
           </div>
         </div>
 
@@ -360,50 +373,50 @@
       </div>
 
       <!-- Unnamed (Group) -->
-      <!-- <div id="u121" class="ax_default" data-width="190" data-height="40"> -->
+      <div id="u121" class="ax_default" data-width="190" data-height="40">
 
         <!-- menu (Rectangle) -->
-        <!-- <div id="u122" class="ax_default heading_1" data-label="menu">
-          <div id="u122_div" class=""></div> -->
+        <div id="u122" class="ax_default heading_1" data-label="menu">
+          <div id="u122_div" class=""></div>
           <!-- Unnamed () -->
-       <!--    <div id="u123" class="text">
-            <p><span>Teams</span></p>
+          <div id="u123" class="text">
+            <p><span>Groups</span></p>
           </div>
-        </div> -->
+        </div>
 
         <!-- icon-team (Image) -->
-       <!--  <div id="u124" class="ax_default image" data-label="icon-team">
-          <img id="u124_img" class="img " src="img/dashboard/icon-team_u124.png"/> -->
+        <div id="u124" class="ax_default image" data-label="icon-team">
+          <img id="u124_img" class="img " src="img/dashboard/icon-team_u124.png"/>
           <!-- Unnamed () -->
-        <!--   <div id="u125" class="text" style="display:none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div> -->
-
-        <!-- undermenu (Rectangle) -->
-       <!--  <div id="u126" class="ax_default box_2" data-label="undermenu" selectiongroup="left-menu">
-          <img id="u126_img" class="img " src="img/dashboard/undermenu_u75.png"/> -->
-          <!-- Unnamed () -->
-        <!--   <div id="u127" class="text" style="display:none; visibility: hidden">
+          <div id="u125" class="text" style="display:none; visibility: hidden">
             <p><span></span></p>
           </div>
         </div>
-      </div> -->
+
+        <!-- undermenu (Rectangle) -->
+        <div id="u126" class="ax_default box_2" data-label="undermenu" selectiongroup="left-menu">
+          <img id="u126_img" class="img " src="img/dashboard/undermenu_u75.png"/>
+          <!-- Unnamed () -->
+          <div id="u127" class="text" style="display:none; visibility: hidden">
+            <p><span></span></p>
+          </div>
+        </div>
+      </div>
 
       <!-- Unnamed (Group) -->
-      <!-- <div id="u128" class="ax_default" data-width="190" data-height="40"> -->
-
+      <!-- <div id="u128" class="ax_default" data-width="190" data-height="40">
+ -->
         <!-- menu (Rectangle) -->
-        <!-- <div id="u129" class="ax_default heading_1" data-label="menu">
+        <<!-- div id="u129" class="ax_default heading_1" data-label="menu">
           <div id="u129_div" class=""></div> -->
           <!-- Unnamed () -->
-         <!--  <div id="u130" class="text">
+          <!-- <div id="u130" class="text">
             <p><span>Add Class</span></p>
           </div>
         </div> -->
 
         <!-- icon-tags (Image) -->
-       <!--  <div id="u131" class="ax_default image" data-label="icon-tags">
+        <!-- <div id="u131" class="ax_default image" data-label="icon-tags">
           <img id="u131_img" class="img " src="img/dashboard/icon-tags_u131.png"/> -->
           <!-- Unnamed () -->
           <!-- <div id="u132" class="text" style="display:none; visibility: hidden">
@@ -573,7 +586,7 @@
               <div id="u170_div" class=""></div>
               <!-- Unnamed () -->
               <div id="u171" class="text">
-                <p><span>Group</span></p>
+                <p><span>Filter</span></p>
               </div>
             </div>
 
@@ -599,17 +612,117 @@
             <div id="u176" class="ax_default heading_1" data-label="body">
               <div id="u176_div" class=""></div>
               <!-- Unnamed () -->
-              <div id="u177" class="text">
-                <p><span>Loading ...</span></p>
-              </div>
+              <button onclick="window.open('./Maching_layout.html')">Manage My Groups</button>
+                <div>
+                  <select id = "subject1">
+                      <option selected disabled>Subject</option>
+                      <option value="COMPSCI">COMPSCI</option>
+                  </select>
+                  <select id = "classnumber1">
+                      <option selected disabled></option>
+                      <option value = "61A">61A</option>
+                      <option value = "61B">61B</option>
+                      <option value = "61C">61C</option>
+                  </select>
+                </div>
+                <div>
+                  <select id = "subject2">
+                      <option selected disabled>Subject</option>
+                      <option value="COMPSCI">COMPSCI</option>
+                      <!--<option value="MATH">MATH</option> -->
+                  </select>
+                  <select id = "classnumber2">
+                      <option selected disabled></option>
+                      <option value = "61A">61A</option>
+                      <option value = "61B">61B</option>
+                      <option value = "61C">61C</option>
+                  </select>
+                </div>
+                <input id="buttonmatch" type="button" name="match" style="vertical-align:middle" value = "match" onclick = "get_group()">
             </div>
+
+            
 
             <!-- body (Rectangle) -->
             <div id="u178" class="ax_default heading_1" data-label="body">
               <div id="u178_div" class=""></div>
               <!-- Unnamed () -->
               <div id="u179" class="text">
-                <p><span>Loading ...</span></p>
+                
+                  <!-- <input id="buttonmatch" type="button" name="match" style="vertical-align:middle" value = "match" onclick = "get_group()">
+                  <input id="buttonmatch" type="button" name="sign out" style="vertical-align:middle" value = "sign out" onclick = "signout_user()"> -->
+                  <div id = "group"></div>
+                  <script>
+                    /*
+                      Create group div depend on the return value of matching function.
+                    */
+                    function create_group_div(group, index) {
+                      var uid = fetch_user_id();
+                      var groupname = "Group name:" + group["name"];
+                      console.log(group['name']);
+                      var groupmembers = "Group Members:";
+                      for (var index in group["students"]) {
+                        groupmembers += get_user_name_uid(group['students'][index]);
+                      }
+                      //create group div'][\]
+                      var parent = document.getElementById('group');
+                        var groupdiv = document.createElement('div');
+                        groupdiv.innerHTML = "recommandgroup"+index+":";
+
+                          var namediv = document.createElement('div');
+                          namediv.innerHTML = groupname;
+                          var memberdiv = document.createElement('div');
+                          memberdiv.innerHTML = groupmembers;
+                          var join = document.createElement('input');
+                          join.setAttribute("type", "button");
+                          join.setAttribute("value", "join");
+                          join.setAttribute("id", group['id']);
+                          join.setAttribute("onclick", "join_group(this.id)");
+
+                        groupdiv.appendChild(namediv);
+                        groupdiv.appendChild(memberdiv);
+                        groupdiv.appendChild(join);
+                      parent.appendChild(groupdiv);
+                    }
+
+                    function create_new_group(){
+                      var parent = document.getElementById('group');
+                        var groupdiv = document.createElement('div');
+                          groupdiv.innerHTML = "No group exists. Enter name to create a new one:";
+                          var name = document.createElement('input');
+                          name.setAttribute('type', 'text');
+                          name.setAttribute('id', 'new_name');
+                          var create_button = document.createElement('button');
+                          create_button.innerHTML = "create";
+                          create_button.setAttribute('value', "create");
+                          create_button.setAttribute("onclick", "create_group()");
+                        groupdiv.appendChild(name);
+                        groupdiv.appendChild(create_button);
+                      parent.appendChild(groupdiv);
+                    }
+                    /*
+                      Get the recommand groups from matching algorithm.
+                    */
+                    function get_group() {
+                      var recommandgroups = match_groups();
+                      document.getElementById('group').innerHTML = "";
+
+                      if (recommandgroups == null) {
+                        create_new_group();
+                      } else {
+                        var i = 1;
+                        // console.log("print tpe:");
+                        console.log(typeof(recommandgroups));
+                        for (var j = 0; j < recommandgroups.length; j++) {
+                          // console.log(recommandgroups[j]);
+                          create_group_div(recommandgroups[j], i);
+                          i++;
+                        }
+                      }
+
+                    }
+                      
+                  </script>
               </div>
             </div>
 
@@ -695,13 +808,13 @@
             </div> -->
 
             <!-- body (Rectangle) -->
-            <!-- <div id="u198" class="ax_default heading_1" data-label="body">
-              <div id="u198_div" class=""></div> -->
+            <div id="u198" class="ax_default heading_1" data-label="body">
+              <div id="u198_div" class=""></div>
               <!-- Unnamed () -->
-              <!-- <div id="u199" class="text">
-                <p><span>Loading ...</span></p>
+              <div id="u199" class="text">
+                <!-- <p><span>Loading ...</span></p> -->
               </div>
-            </div> -->
+            </div>
 
             <!-- selection-title (Rectangle) -->
             <div id="u200" class="ax_default heading_1" data-label="selection-title">
@@ -757,7 +870,7 @@
               <div id="u210_div" class=""></div>
               <!-- Unnamed () -->
               <div id="u211" class="text">
-                <p><span>Filters</span></p>
+                <p><span>Lecture Notes</span></p>
               </div>
             </div>
 
@@ -766,7 +879,7 @@
               <div id="u212_div" class=""></div>
               <!-- Unnamed () -->
               <div id="u213" class="text">
-                <p><span>Charts</span></p>
+                <p><span>When2Meet</span></p>
               </div>
             </div>
 
@@ -784,7 +897,11 @@
               <div id="u216_div" class=""></div>
               <!-- Unnamed () -->
               <div id="u217" class="text">
-                <p><span>Loading ...</span></p>
+                <img id="lecnote_img" class="img " src="img/dashboard/lecture notes.jpg"/>
+                <!-- Unnamed () -->
+                <div id="u58" class="text" style="display:none; visibility: hidden">
+                  <p><span></span></p>
+                </div>
               </div>
             </div>
 
@@ -793,7 +910,11 @@
               <div id="u218_div" class=""></div>
               <!-- Unnamed () -->
               <div id="u219" class="text">
-                <p><span>Loading ...</span></p>
+                <img id="w2m_img" class="img " src="img/dashboard/w2m.png"/>
+                <!-- Unnamed () -->
+                <div id="u58" class="text" style="display:none; visibility: hidden">
+                  <p><span></span></p>
+                </div>
               </div>
             </div>
 
@@ -874,29 +995,29 @@
             </div>
 
             <!-- bg-magenta (Rectangle) -->
-            <div id="u236" class="ax_default box_2" data-label="bg-magenta">
-              <div id="u236_div" class=""></div>
+            <!-- <div id="u236" class="ax_default box_2" data-label="bg-magenta">
+              <div id="u236_div" class=""></div> -->
               <!-- Unnamed () -->
-              <div id="u237" class="text" style="display:none; visibility: hidden">
+              <!-- <div id="u237" class="text" style="display:none; visibility: hidden">
                 <p><span></span></p>
               </div>
-            </div>
+            </div> -->
 
             <!-- bg-black (Rectangle) -->
-            <div id="u238" class="ax_default box_2" data-label="bg-black">
-              <div id="u238_div" class=""></div>
+            <!-- <div id="u238" class="ax_default box_2" data-label="bg-black">
+              <div id="u238_div" class=""></div> -->
               <!-- Unnamed () -->
-              <div id="u239" class="text" style="display:none; visibility: hidden">
+              <!-- <div id="u239" class="text" style="display:none; visibility: hidden">
                 <p><span></span></p>
               </div>
-            </div>
+            </div> -->
 
             <!-- title (Rectangle) -->
             <div id="u240" class="ax_default heading_1" data-label="title">
               <div id="u240_div" class=""></div>
               <!-- Unnamed () -->
               <div id="u241" class="text">
-                <p><span>Average</span></p>
+                <p><span>Add Class</span></p>
               </div>
             </div>
 
@@ -914,43 +1035,80 @@
               <div id="u244_div" class=""></div>
               <!-- Unnamed () -->
               <div id="u245" class="text">
-                <p><span>Loading ...</span></p>
-              </div>
+                <p><span>
+                	<div>
+                	<select id = "subject1">
+		            <option selected disabled>Subject</option>
+		    		<option value="COMPSCI">COMPSCI</option>
+        			<option value="COMPSCI">PHILOS</option>
+					</select>
+				<select id = "classnumber1">
+		    		<option selected disabled></option>
+		    		<option value = "61A">61A</option>
+		    		<option value = "61B">61B</option>
+		    		<option value = "61C">61C</option>
+				</select>
+			    </div>
+			    <div>
+				<select id = "subject2">
+		    	<option selected disabled>Subject</option>
+		    	<option value="COMPSCI">COMPSCI</option>
+		    <!--<option value="MATH">MATH</option> -->
+			    
+			    </select>
+			    <select id = "classnumber2">
+		    	<option selected disabled></option>
+		    	<option value = "61A">61A</option>
+		    	<option value = "61B">61B</option>
+		        <option value = "61C">61C</option>
+		        </select>
+		    	</div>
+                </span></p>
+
+                <button onclick="add_class()">Add Class</button>
+                <script>
+  				function add_class() {
+   			 	var uid = fetch_user_id();
+    			//get_user_class(uid);
+    			//TODO: add class to database user class list
+    			alert("Add class successfully!");
+  				}
+				</script>
             </div>
 
             <!-- title (Rectangle) -->
-            <div id="u246" class="ax_default heading_1" data-label="title">
-              <div id="u246_div" class=""></div>
+            <!-- <div id="u246" class="ax_default heading_1" data-label="title">
+              <div id="u246_div" class=""></div> -->
               <!-- Unnamed () -->
-              <div id="u247" class="text">
+              <!-- <div id="u247" class="text">
                 <p><span>Loss</span></p>
               </div>
-            </div>
+            </div> -->
 
             <!-- body (Rectangle) -->
-            <div id="u248" class="ax_default heading_1" data-label="body">
-              <div id="u248_div" class=""></div>
+            <!-- <div id="u248" class="ax_default heading_1" data-label="body">
+              <div id="u248_div" class=""></div> -->
               <!-- Unnamed () -->
-              <div id="u249" class="text">
+              <!-- <div id="u249" class="text">
                 <p><span>Loading ...</span></p>
               </div>
-            </div>
+            </div> -->
 
             <!-- title (Rectangle) -->
-            <div id="u250" class="ax_default heading_1" data-label="title">
-              <div id="u250_div" class=""></div>
+            <!-- <div id="u250" class="ax_default heading_1" data-label="title">
+              <div id="u250_div" class=""></div> -->
               <!-- Unnamed () -->
-              <div id="u251" class="text">
+              <!-- <div id="u251" class="text">
                 <p><span>Factor X</span></p>
               </div>
-            </div>
+            </div> -->
 
             <!-- body (Rectangle) -->
             <div id="u252" class="ax_default heading_1" data-label="body">
               <div id="u252_div" class=""></div>
               <!-- Unnamed () -->
               <div id="u253" class="text">
-                <p><span>Loading ...</span></p>
+                <!-- <p><span>Loading ...</span></p> -->
               </div>
             </div>
 
@@ -959,7 +1117,7 @@
               <div id="u254_div" class=""></div>
               <!-- Unnamed () -->
               <div id="u255" class="text">
-                <p><span>Profit</span></p>
+                <p><span>Drop Class</span></p>
               </div>
             </div>
 
