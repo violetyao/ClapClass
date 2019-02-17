@@ -185,3 +185,14 @@ function get_user_answer(uid){
 	return answers;
 } 
 
+// Creates a group
+function create_group(courses, name, uid) {
+	let groupRef = firebase.database().ref("Group");
+	let groupId = groupRef.push().key;
+	let group = {
+		"classes": courses,
+		"students": [uid],
+		"name": name,
+	};
+	groupRef.child(groupId).set(group);
+}
