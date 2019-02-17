@@ -19,7 +19,7 @@
     <title></title>
 </head>
 <body onload = "fetch_all_data()">
-	<a onclick="window.open('./my_group.html')">Manage my groups</a>
+	<button onclick="window.open('./Matching.html')">Manage My Groups</button>
 	<div>
 		<select id = "subject1">
 		    <option selected disabled>Subject</option>
@@ -54,14 +54,15 @@
 	function create_group_div(group, index) {
 		var uid = fetch_user_id();
 		var groupname = "Group name:" + group["name"];
+		console.log(group['name']);
 		var groupmembers = "Group Members:";
-		for (var uid in group["student"]) {
-			groupmembers += get_user_name_uid(uid);
+		for (var index in group["students"]) {
+			groupmembers += get_user_name_uid(group['students'][index]);
 		}
 		//create group div'][\]
 		var parent = document.getElementById('group');
 			var groupdiv = document.createElement('div');
-			groupdiv.innerHTML = "recommandgroup"+groupPage+":";
+			groupdiv.innerHTML = "recommandgroup"+index+":";
 
 				var namediv = document.createElement('div');
 				namediv.innerHTML = groupname;
@@ -70,8 +71,8 @@
 				var join = document.createElement('input');
 				join.setAttribute("type", "button");
 				join.setAttribute("value", "join");
-				join.setAttribute("id", group[id]);
-				join.setAttribute("onclick", "join(this.id)");
+				join.setAttribute("id", group['id']);
+				join.setAttribute("onclick", "join_group(this.id)");
 
 			groupdiv.appendChild(namediv);
 			groupdiv.appendChild(memberdiv);
@@ -105,8 +106,11 @@
 			create_new_group();
 		} else {
 			var i = 1;
-			for (var group in recommandgroups) {
-				create_group_div(group, i);
+			// console.log("print tpe:");
+			console.log(typeof(recommandgroups));
+			for (var j = 0; j < recommandgroups.length; j++) {
+				// console.log(recommandgroups[j]);
+				create_group_div(recommandgroups[j], i);
 				i++;
 			}
 		}

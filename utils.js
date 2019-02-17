@@ -35,7 +35,7 @@ function matrix_correlation(m1, m2) {
  */
 function computeUserCorrelation(uid1, uid2){
 	// TODO: basically get_same_classes(id1, di2).length
-
+    console.log("computing correlation between " + uid1 + " and " + uid2);
     return get_same_class(uid1, uid2).length;
 }
 
@@ -281,8 +281,8 @@ function match_groups(){
         let id = all_group_ids[i];
         let group = get_group_by_id(id);
         let g_corr = group_corr(uid, group, courses);
-        console.log("group corr");
-        console.log(g_corr);
+        // console.log("group corr");
+        // console.log(g_corr);
         if (g_corr !== 0){ // ignoring groups that don't fit
             group["id"] = id;
             console.log("adding pari");
@@ -296,6 +296,8 @@ function match_groups(){
     for (let i = 0; i < l; i ++){
         groups[l - i - 1] = fringe.pop()[0];
     }
+    console.log("returned groups: ");
+    console.log(groups);
     return groups;
 }
 
