@@ -27,7 +27,7 @@ Collect info about user study philosophy
 
 ## Challenges we ran into
 
-## Accomplishments that We are proud of
+## Accomplishments that we are proud of
 
 ## What we learned
 
