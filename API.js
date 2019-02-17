@@ -243,7 +243,7 @@ function join_group(groupId) {
     });
 
     // Add group to student
-    let ref = firebase.database().ref("/AllUsers/" + uid);
+    ref = firebase.database().ref("/AllUsers/" + uid + "/MyGroups");
     ref.once("value").then(function (snapshot) {
         currentGroups = snapshot.val();
         if (!(groupId in currentStudents)) {
