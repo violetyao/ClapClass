@@ -30,6 +30,9 @@ Collect info about user study philosophy
 ## Accomplishments that we are proud of
 
 ## What we learned
+Treehacks is better than Calhacks!
+Boyuan doesn't need sleep. :)
+
 
 ## TODO
 
