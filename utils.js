@@ -256,6 +256,7 @@ function group_corr(user_id, group, classes){
 function match_groups(user_id, classes){
     // let group_num = get_total_number_of_groups();
     let all_group_ids = get_all_group_ids();
+    console.log(all_group_ids);
     let l = Math.min(groupSuggestionLength, all_group_ids.length); // final length of the returned array
     let groups = new Array(l);
     let fringe = new PriorityQueue(comp);

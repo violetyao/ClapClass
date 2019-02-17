@@ -210,30 +210,31 @@ function get_all_group_ids() {
         group_data.forEach(function (group) {
             keys.push(group.key);
         });
-        return keys
-    })
+        return keys;
+    });
+    return [];
 }
 
 // Creates a group
 function create_group(courses, name, uid) {
-	let groupRef = firebase.database().ref("Group");
-	let groupId = groupRef.push().key;
-	let group = {
-		"classes": courses,
-		"students": [uid],
-		"name": name,
-	};
-	groupRef.child(groupId).set(group);
+    let groupRef = firebase.database().ref("Group");
+    let groupId = groupRef.push().key;
+    let group = {
+        "classes": courses,
+        "students": [uid],
+        "name": name,
+    };
+    groupRef.child(groupId).set(group);
 }
 
 // Join a group
 function join_group(uid, groupId) {
-	let ref = firebase.database().ref("/Group/" + groupId + "/students");
-	ref.once("value").then(function (snapshot) {
-		currentStudents = snapshot.val();
-		if (!(uid in currentStudents)) {
-			currentStudents.push(uid);
-			snapshot.ref.set(currentStudents);
-		}
-	});
+    let ref = firebase.database().ref("/Group/" + groupId + "/students");
+    ref.once("value").then(function (snapshot) {
+        currentStudents = snapshot.val();
+        if (!(uid in currentStudents)) {
+            currentStudents.push(uid);
+            snapshot.ref.set(currentStudents);
+        }
+    });
 }
