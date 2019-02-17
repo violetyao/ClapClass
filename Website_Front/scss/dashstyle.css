@@ -5314,3 +5314,22 @@
   opacity: 1;
   right: 0;
 }
+
+#lecnote_img {
+  border-width:0px;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:200px;
+  height:200px;
+}
+
+
+#w2m_img {
+  border-width:0px;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:550px;
+  height:300px;
+}
