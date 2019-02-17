@@ -21,7 +21,7 @@ Login/Signup
 Dashboard
 Find buddy
 My Groups
-
+![alt text](https://github.com/violetyao/treehacks/blob/master/ClapClass_processon%206.28%20pm.png)
 Interface design can be found at ClapClass_processon. 
 
 ### Home
@@ -38,24 +38,15 @@ We used Firebase as our backend. We used vanilla JS and jQuery as our frontend. 
 ## Challenges we ran into
 Race conditions are hard to deal with. Hard to rewrite code to accommodate callback functions.
 
-How to connect with backend to receive information, and display them in the frontend
-
 ## Accomplishments that we are proud of
 Crawled 6000+ classes in less than an hour.
-
-A unique survey created by ourselves. The survey can jump to the next page automatically, and show a progress bar on the bottom.
 
 ## What we learned
 How to use firebase APIs and NoSQL databases in general.
 
-Surveyjs, a js library that provides framework for survey design.
-
 Treehacks is better than Calhacks!
 
 Boyuan doesn't need sleep. :)
-
-## What's next for ClapClass
-Implement features such as booking a studying room, using google calendar API to schedule a group meeting, lecture note-taking. 
 
 
 ## TODO
