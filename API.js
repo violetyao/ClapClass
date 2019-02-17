@@ -259,7 +259,7 @@ function join_group(groupId) {
     let ref = firebase.database().ref("/Group/" + groupId + "/students");
     ref.once("value").then(function (snapshot) {
         let currentStudents = snapshot.val();
-        if (!(uid in currentStudents)) {
+        if (currentStudents.indexOf(uid) < 0) {
             currentStudents.push(uid);
             snapshot.ref.set(currentStudents);
         }
@@ -272,7 +272,7 @@ function join_group(groupId) {
         console.log(currentGroups);
         if (currentGroups == null) {
             currentGroups = [groupId];
-        } else if (!(groupId in currentGroups)) {
+        } else if (currentGroups.indexOf(groupId) < 0) {
             currentGroups.push(groupId);
         }
         snapshot.ref.set(currentGroups);
