@@ -42,7 +42,7 @@ Crawled 6000+ classes in less than an hour.
 How to use different libraries, such as firebase APIs and NoSQL, and Dreamweaver is a great tool to visualize and locate code!
 
 ## What's next for ClapClass
-
+We would incorporate more study group features, such as grabing food together when group members' available time slots are close during meal time. We also plan to implement a credit system. Showing up on time for group meetings and sharing lecture notes will increase credit and vice versa. 
 
 ## API
 get_user_name(userid) // Given a userId, return the corresponding username
