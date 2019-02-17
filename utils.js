@@ -65,7 +65,7 @@ function rank_users(uid, all_user_id){
 	let l = Math.min(all_user_id.length, suggestionMax);
 	let result = new Array(l);
 	for (i = 0; i < l ; i++) {
-		result[l - i - 1] = queue.pop()[0];
+		result[l - i - 1] = queue.pop();
 	}
 	return result;
 }
@@ -122,7 +122,7 @@ function further_improve_ranking(uid){
 		queue.push([other_stu_id, new_corr]);
 	}
 	for (i = 0; i < l ; i++) {
-		newList[l - i - 1] = queue.pop()[0];
+		newList[l - i - 1] = queue.pop();
 	}
 	return newList;
 }

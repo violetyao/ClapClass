@@ -126,6 +126,7 @@ function get_classes_list(subject){
  // return a dictionary of all classes a certain user is taking. {subject:[classnumber]}
 function get_user_class(userid){
 	check_uid(userid);
+	console.log("user: " + userid);
 	return all_users_info[userid]["Class"];
 
 }
