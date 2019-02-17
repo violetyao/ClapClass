@@ -6,39 +6,25 @@ We sit randomly in a large lecture hall, rush out when class ends. It’s never 
 ## Core objective
 Clapclass.io is a smart platform to help students find study buddies with similar study philosophy and schedule while providing a series of useful tools to boost cooperation in study groups.
 
-## Group Matching
+### Group Matching
 Aside from current course load, ClapClass asks users to fill out a work philosophy survey, including attitudes towards extra credits, preferred studying time, preference over pulling an all nighter or planning tasks for several days, etc. Based on what classes users are taking and their respective study habits, we match a user with several recommended study groups. Cliking on different groups’ info pages, user will decide which study group to join.
 
-## Study Group Toolkit
+### Study Group Toolkit
 #### Co-note-taking
 Taking notes on Google Doc with your study group! 
 #### When-to-Meet
 Easy Interface to schedule a meeting and reserve study room in Library.
 
 ## Interface
-Home
-Login/Signup
-Dashboard
-Find buddy
-My Groups
-![alt text](https://github.com/violetyao/treehacks/blob/master/ClapClass_processon%201.25%20am.jpg)
-Interface design can be found at ClapClass_processon. 
-
-### Home
-Simple Welcome page with login/Signup button
-
-### Login/Signup
-
-### Survey
-Collect info about user study philosophy
+![alt text](https://github.com/violetyao/treehacks/blob/master/sketch/ClapClass_processon%201.25%20am.jpg)
 
 ## How we built it
 We used Firebase as our backend. We used vanilla JS and jQuery as our frontend. We also used python packages including beautifulsoup, requests, and json to acquire and process class information.
+We used HTML, JavaScript, and CSS as our frontend. 
 
 ## Challenges we ran into
 Race conditions are hard to deal with. Hard to rewrite code to accommodate callback functions.
-
-It takes a bit time to learn new things.
+We are not experienced in web development. It took us a while to learn new things.
 
 ## Accomplishments that we are proud of
 Crawled 6000+ classes in less than an hour.
