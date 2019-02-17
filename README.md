@@ -26,6 +26,7 @@ Collect info about user study philosophy
 Simple interface to select what class 
 
 ### Dashboard
+Partially working. Framework completed, need to put things inside.
 Dashboard page to guide users to enter Group-Matching/My Groups.
 
 Group-Matching leads to Partner Page. 
