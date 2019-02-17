@@ -20,7 +20,7 @@ function test_user_boxing() {
     });
     let name = document.getElementById("name").value;
     let preference = {"27056890": 2};
-    let uid = get_user_id();
+    let uid = fetch_user_id();
     u = new User(sid, answers, classes, name, preference, uid);
 }
 
@@ -29,14 +29,15 @@ function get_sid() {
     return user_token_to_sid(user_token);
 }
 
-function user_token_to_sid(token){
+function user_token_to_sid(token) {
     firebase.database().ref('UserId').on('value', function (snapshot) {
         data = snapshot.val();
     });
     return data[token]
 }
 
-function get_user_id() {
+function fetch_user_id() {
+    sleep(1000);
     return get_user_info()[3]
 }
 

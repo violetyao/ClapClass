@@ -7,6 +7,7 @@ class User {
         this.preference = preference;
         this.uid = uid;
         this.create();
+        console.log("Created User")
     }
 
     create() {
@@ -18,7 +19,6 @@ class User {
             "SID": this.sid
         })
     }
-
 
 
 }
@@ -33,6 +33,6 @@ function update(uid, answers, classes, name, preference, sid) {
     })
 }
 
-function add_class(uid, _class){
+function add_class(uid, _class) {
 
 }
