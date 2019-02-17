@@ -48,6 +48,9 @@
 	<input type="button" name="match" value = "match" onclick = "get_group()">
 	<div id = "group"></div>
 <script>
+	/*
+		Create group div depend on the return value of matching function.
+	*/
 	function create_group_div(group, index) {
 		var uid = fetch_user_id();
 		var groupname = "Group name:" + group["name"];
@@ -55,7 +58,7 @@
 		for (var uid in group["student"]) {
 			groupmembers += get_user_name_uid(uid);
 		}
-
+		//create group div'][\]
 		var parent = document.getElementById('group');
 			var groupdiv = document.createElement('div');
 			groupdiv.innerHTML = "recommandgroup"+groupPage+":";
@@ -91,7 +94,9 @@
 			groupdiv.appendChild(create_button);
 		parent.appendChild(groupdiv);
 	}
-
+	/*
+		Get the recommand groups from matching algorithm.
+	*/
 	function get_group() {
 		var recommandgroups = match_groups();
 		document.getElementById('group').innerHTML = "";
