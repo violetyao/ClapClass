@@ -73,10 +73,11 @@ function create_user(email, password, name, studentid, url = null) {
             "Name": name,
             "SID": studentid
         });
+        console.log("writing database");
         firebase.database().ref("UserId/" + uid).set(
             studentid);
         if (url != null) {
-            window.open(url);
+            //window.open(url);
         }
     }).catch(function (error) {
         // Handle Errors here.
@@ -104,7 +105,7 @@ function button_signin() {
 function signin_user(email, password, url = null) {
     firebase.auth().signInWithEmailAndPassword(email, password).then(function () {
         if (url != null) {
-            window.open(url, "_self");
+            window.open(url);
         }
     }).catch(function (error) {
         // Handle Errors here.
@@ -118,7 +119,7 @@ function signout_user() {
     firebase.auth().signOut().then(function () {
         // Sign-out successful.
         console.log("Sign out successful");
-        window.open("./Website_Front/login.html", "_self")
+        //window.open("./Website_Front/login.html")
     }).catch(function (error) {
         // An error happened.
         console.log(error)

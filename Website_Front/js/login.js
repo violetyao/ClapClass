@@ -30,7 +30,7 @@ $(document).ready(function () {
 
 function signup() {
     if (fetch_user_id() != null) {
-        window.open("../groupPage.html");
+        //window.open("../groupPage.html");
     }
 
     let name = $("#signupform > input[type=name]").val();
