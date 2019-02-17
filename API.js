@@ -248,4 +248,14 @@ function join_group(groupId) {
             snapshot.ref.set(currentStudents);
         }
     });
+
+    // Add group to student
+    let ref = firebase.database().ref("/AllUsers/" + uid);
+    ref.once("value").then(function (snapshot) {
+        currentGroups = snapshot.val();
+        if (!(groupId in currentStudents)) {
+            currentGroups.push(groupId);
+            snapshot.ref.set(currentGroups);
+        }
+    });
 }
