@@ -33,6 +33,7 @@ firebase.initializeApp(config);
 var allId;
 var all_users_info;
 var all_classes_info;
+var all_groups=[];
 
 function fetch_all_users() {
     firebase.database().ref('AllUsers').on('value', function (snapshot) {
@@ -43,6 +44,9 @@ function fetch_all_users() {
     })
     firebase.database().ref('UserId').on('value', function (snapshot) {
         allId = snapshot.val();
+    })
+    firebase.database().ref('Group').on('value', function (snapshot) {
+        all_groups = snapshot.val();
     })
 }
 
@@ -204,15 +208,11 @@ function get_total_number_of_groups() {
 }
 
 function get_all_group_ids() {
-    firebase.database().ref("Group").once("value").then(function (snapshot) {
-        let group_data = snapshot;
-        keys = [];
-        group_data.forEach(function (group) {
-            keys.push(group.key);
-        });
-        return keys;
-    });
-    return [];
+    var groups = [];
+    for (var index in all_groups) {
+    	groups.push(all_groups[index]);
+    }
+    return groups;
 }
 
 // Creates a group
