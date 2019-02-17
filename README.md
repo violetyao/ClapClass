@@ -1,9 +1,12 @@
 # ClapClass.io -- A Treehacks 2019 Project
+
 A smart platform to learn together
 
+## Inspiration
+We sit randomly in a large lecture hall, rush out when class ends. It’s never easy to find new, trustworthy buddies with similar interests and schedule. 
+
 ## Core objective
-
-
+Clapclass.io is a smart platform to help students find study buddies with similar study philosophy and schedule while providing a series of useful tools to boost cooperation in study groups.
 
 ## Interface
 Home
