@@ -39,7 +39,15 @@ function user_token_to_sid(token) {
 }
 
 function fetch_user_id() {
-    return get_user_info()[3]
+    let n = 0;
+    while (setTimeout(get_user_info, 200) == null && n < 2000) {
+        n += 1;
+
+    }
+    if (get_user_info() != null) {
+        return get_user_info()[3];
+    }
+    return null;
 }
 
 function get_user_info() {

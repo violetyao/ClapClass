@@ -33,7 +33,7 @@ function signup() {
     let email = $("#signupform > input[type=email]").val();
     let password = $("#signupform > input[type=password]").val();
     let studentid = $("#signupform > input[type=SID]").val();
-    create_user(email, password);
+    create_user(email, password, "../groupPage.html");
     console.log("Signing Up");
     //signin_user(email, password);
     var uid = null;
