@@ -90,7 +90,11 @@
 		parent.appendChild(groupdiv);
 	}
 	function get_group() {
-		var recommandgroups = match_groups();
+		let uid = fetch_user_id();
+		let classes = [{key: document.getElementById("subject1"),
+			value: document.getElementById("classnumber1")}, {key: document.getElementById("subject2"),
+			value: document.getElementById("classnumber2")}];
+		var recommandgroups = match_groups(uid, classes);
 		if (recommandgroups == null) {
 			create_new_group();
 		} else {
