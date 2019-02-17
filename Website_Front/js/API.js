@@ -34,20 +34,29 @@ var allId;
 var all_users_info;
 var all_classes_info;
 var all_groups;
+var fetched = 0;
 
 function fetch_all_data() {
     firebase.database().ref('AllUsers').on('value', function (snapshot) {
         all_users_info = snapshot.val();
-    })
+        fetched += 1;
+    });
     firebase.database().ref('Classes').on('value', function (snapshot) {
         all_classes_info = snapshot.val();
-    })
+        fetched += 1;
+    });
     firebase.database().ref('UserId').on('value', function (snapshot) {
         allId = snapshot.val();
-    })
+        fetched += 1;
+    });
     firebase.database().ref('Group').on('value', function (snapshot) {
         all_groups = snapshot.val();
+        fetched += 1;
     })
+}
+
+function check_fetched() {
+    return fetched === 4;
 }
 
 function check_uid(uid) {
@@ -142,8 +151,9 @@ function get_user_class(userid) {
 }
 
 function get_user_class_subject(userid, subject) {
-	return get_user_class(userid)[subject];
+    return get_user_class(userid)[subject];
 }
+
 // return all users of a certain class
 function get_class_user(class1) {
     for (var subject in class1) {
@@ -156,29 +166,29 @@ function get_same_class(userid1, userid2) {
     var sameclass = [];
     var classes1 = get_user_class(userid1);
     var classes2 = get_user_class(userid2);
-    
+
     var user1list = [];
     for (var subject in classes1) {
-    	var classcurrentsubject = get_user_class_subject(userid1, subject)
-    	for (var classnum in classcurrentsubject) {
-    		user1list.push(subject + classcurrentsubject[classnum]);
-    	}
+        var classcurrentsubject = get_user_class_subject(userid1, subject)
+        for (var classnum in classcurrentsubject) {
+            user1list.push(subject + classcurrentsubject[classnum]);
+        }
     }
 
     var user2list = [];
     for (var subject in classes2) {
-    	var classcurrentsubject = get_user_class_subject(userid2, subject)
-    	for (var classnum in classcurrentsubject) {
-    		user2list.push(subject + classcurrentsubject[classnum]);
-    	}
+        var classcurrentsubject = get_user_class_subject(userid2, subject)
+        for (var classnum in classcurrentsubject) {
+            user2list.push(subject + classcurrentsubject[classnum]);
+        }
     }
 
     for (var i = 0; i < user1list.length; i++) {
-    	for (var j = 0; j < user2list.length; j++) {
-    		if (user1list[i] == user2list[j]) {
-    			sameclass.push(user1list[i]);
-    		}
-    	}
+        for (var j = 0; j < user2list.length; j++) {
+            if (user1list[i] == user2list[j]) {
+                sameclass.push(user1list[i]);
+            }
+        }
     }
     return sameclass;
 }
@@ -226,22 +236,22 @@ function get_total_number_of_groups() {
 function get_all_group_ids() {
     var groups = [];
     for (var index in all_groups) {
-    	groups.push(index);
+        groups.push(index);
     }
     return groups;
 }
 
 // Creates a group
 function create_group() {
-	//Get user id for creating group
-	var uid = fetch_user_id();
-	//Get 
-	var courses = [];
-	var course1 = {};
-	course1[document.getElementById('subject1').value] = document.getElementById('classnumber1').value;
-	var course2 = {};
-	course2[document.getElementById('subject2').value] = document.getElementById('classnumber2').value;
-	courses.push(course1, course2);
+    //Get user id for creating group
+    var uid = fetch_user_id();
+    //Get
+    var courses = [];
+    var course1 = {};
+    course1[document.getElementById('subject1').value] = document.getElementById('classnumber1').value;
+    var course2 = {};
+    course2[document.getElementById('subject2').value] = document.getElementById('classnumber2').value;
+    courses.push(course1, course2);
     let groupRef = firebase.database().ref("Group");
     let groupId = groupRef.push().key;
     let name = document.getElementById('new_name').value;
@@ -255,7 +265,7 @@ function create_group() {
 
 // Join a group
 function join_group(groupId) {
-	var uid = fetch_user_id();
+    var uid = fetch_user_id();
     let ref = firebase.database().ref("/Group/" + groupId + "/students");
     ref.once("value").then(function (snapshot) {
         let currentStudents = snapshot.val();
