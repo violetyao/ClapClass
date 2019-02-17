@@ -43,14 +43,12 @@ function signup() {
     firebase.database().ref("AllUsers/" + uid).set({
         "Name": name
     });
-    window.open("../groupPage.html");
 }
 
 function login() {
     let email = $("#loginform > input[type=email]").val();
     let password = $("#loginform > input[type=password]").val();
-    signin_user(email, password);
+    signin_user(email, password, "../groupPage.html");
     console.log("Signing In");
     console.log("User ID: " + fetch_user_id() + " signed in")
-    window.open("../groupPage.html");
 }

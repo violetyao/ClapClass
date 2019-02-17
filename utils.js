@@ -35,6 +35,7 @@ function matrix_correlation(m1, m2) {
  */
 function computeUserCorrelation(uid1, uid2){
 	// TODO: basically get_same_classes(id1, di2).length
+
     return get_same_class(uid1, uid2).length;
 }
 
@@ -239,14 +240,16 @@ function group_corr(user_id, group, classes){
     let group_classes = group["classes"];
     for (let c in classes){
         if (! group_classes.some(e => class_match(e, c))){ // if my class is not contained in the group, stop
+            console("class " + c + " is not contained");
             return 0;
         }
     }
+    console.log("have same classes");
     let group_students = group['students']; // list of id
     let corr = 0; // The final corr should be > 0 since the students should have common classes to join
-    for (let sid in group_students){
+    for (var i in group_students){
         // if (sid != null){
-        corr += computeUserCorrelation(sid, user_id)
+        corr += computeUserCorrelation(group_students[i], user_id)
         // }
     }
     return corr / group_students.length;
@@ -276,8 +279,12 @@ function match_groups(){
         let id = all_group_ids[i];
         let group = get_group_by_id(id);
         let g_corr = group_corr(uid, group, courses);
+        console.log("group corr");
+        console.log(g_corr);
         if (g_corr !== 0){ // ignoring groups that don't fit
             group["id"] = id;
+            console.log("adding pari");
+            console.log([group, g_corr]);
             fringe.push([group, g_corr]);
         }
     }

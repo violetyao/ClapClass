@@ -62,8 +62,12 @@ function get_user_info() {
 
 }
 
-function create_user(email, password) {
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
+function create_user(email, password, url = null) {
+    firebase.auth().createUserWithEmailAndPassword(email, password).then(function () {
+        if (url != null) {
+            window.open(url);
+        }
+    }).catch(function (error) {
         // Handle Errors here.
         let errorCode = error.code;
         let errorMessage = error.message;
@@ -86,8 +90,12 @@ function button_signin() {
     console.log("Logging In")
 }
 
-function signin_user(email, password) {
-    firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
+function signin_user(email, password, url = null) {
+    firebase.auth().signInWithEmailAndPassword(email, password).then(function () {
+        if (url != null) {
+            window.open(url);
+        }
+    }).catch(function (error) {
         // Handle Errors here.
         let errorCode = error.code;
         let errorMessage = error.message;

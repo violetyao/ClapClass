@@ -51,6 +51,7 @@ function fetch_all_data() {
 }
 
 function check_uid(uid) {
+    // console.log(uid);
     var flag = false;
     for (var userid in allId) {
         if (userid == uid) {
