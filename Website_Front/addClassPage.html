@@ -46,12 +46,13 @@
 		</select>
 	</div>
 	<button onclick="add_class()">Add Class</button>
-  <button onclick="window.open('./dashboard.html')">Done!</button>
+  <button onclick="window.open('./dashboard.html', '_parent')">Done!</button>
 	<div id = "group"></div>
 <script>
   function add_class() {
     var uid = fetch_user_id();
     //get_user_class(uid);
+    //TODO: add class to database user class list
     alert("Add class successfully!");
   }
 
