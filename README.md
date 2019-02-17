@@ -29,9 +29,9 @@ Collect info about user study philosophy
 
 ### Challenges we ran into
 
-### Accomplishments that I'm proud of
+### Accomplishments that We are proud of
 
-### What I learned
+### What we learned
 
 ## TODO
 
