@@ -44,7 +44,7 @@ It takes a bit time to learn new things.
 Crawled 6000+ classes in less than an hour.
 
 ## What we learned
-How to use different libraries, such as firebase APIs and NoSQL.
+How to use different libraries, such as firebase APIs and NoSQL, and Dreamweaver is a great tool to visualize and locate code!
 
 Treehacks is better than Calhacks!
 
