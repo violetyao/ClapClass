@@ -48,6 +48,14 @@
             var errorMessage = error.message;
         });
 
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            // User is signed in.
+            window.open("../groupPage.html", "_self")
+        } else {
+            // No user is signed in.
+        }
+    });
 </script>
 <div id="box">
     <div id="main"></div>

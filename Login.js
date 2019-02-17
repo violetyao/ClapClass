@@ -117,7 +117,8 @@ function signin_user(email, password, url = null) {
 function signout_user() {
     firebase.auth().signOut().then(function () {
         // Sign-out successful.
-        console.log("Sign out successful")
+        console.log("Sign out successful");
+        window.open("./Website_Front/login.html", "_self")
     }).catch(function (error) {
         // An error happened.
         console.log(error)
