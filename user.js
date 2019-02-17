@@ -7,6 +7,7 @@ class User {
         this.preference = preference;
         this.uid = uid;
         this.create();
+        console.log("Created User")
     }
 
     create() {
@@ -20,19 +21,27 @@ class User {
     }
 
 
-
 }
 
-function update(uid, answers, classes, name, preference, sid) {
-    firebase.database().ref("AllUsers/" + this.uid).update({
-        "Answer": this.answers,
-        "Class": this.classes,
-        "Name": this.name,
-        "Preference": this.preference,
-        "SID": this.sid
+function update_preference(uid, preference) {
+    firebase.database().ref("AllUsers/" + uid).update({
+        "Preference": preference
     })
 }
 
-function add_class(uid, _class){
+function update_classes(uid, classes) {
+    firebase.database().ref("AllUsers/" + uid).update({
+        "Class": classes
+    })
+}
+
+function update_answers(uid, answers) {
+    firebase.database().ref("AllUsers/" + uid).update({
+        "Answer": answers
+    })
+
+}
+
+function add_class(uid, _class) {
 
 }

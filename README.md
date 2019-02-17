@@ -1,7 +1,5 @@
 # ClapClass.io -- A Treehacks 2019 Project
 
-A smart platform to learn together
-
 ## Inspiration
 We sit randomly in a large lecture hall, rush out when class ends. It’s never easy to find new, trustworthy buddies with similar interests and schedule. 
 
@@ -13,15 +11,29 @@ Home
 Login/Signup
 Dashboard
 Find buddy
+My Groups
+
+Interface design can be found at ClapClass_processon. 
 
 ### Home
-Finished. Simple Welcome page with login button
+Simple Welcome page with login/Signup button
 
 ### Login/Signup
-Need backend. As titled
 
-## Survey
+### Survey
 Collect info about user study philosophy
+
+## How we built it
+
+## Challenges we ran into
+
+## Accomplishments that we are proud of
+
+## What we learned
+Treehacks is better than Calhacks!
+
+Boyuan doesn't need sleep. :)
+
 
 ## TODO
 

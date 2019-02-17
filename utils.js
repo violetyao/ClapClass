@@ -1,13 +1,17 @@
 // functions
 
 const suggestionMax = 100;
+const improvedSuggestionMax = 20;
+
+
+
+
 /*
 * v1, v2 are two list of numbers
 * Assume v1, v2 belong to the same course subject
 */
-
 function correlation(v1, v2) {
-    sum = 0;
+    let sum = 0;
     for (i = 0; i < v2.length; i++) {
         sum += v1[i] * v2[i];
     }
@@ -18,17 +22,20 @@ function correlation(v1, v2) {
 * @deprecated
 */
 function matrix_correlation(m1, m2) {
-    cor = 0;
-    for (i = 0; i < m1.length; i++) {
+    let cor = 0;
+    for (let i = 0; i < m1.length; i++) {
         cor += correlation(m1[i], m2[i]);
     }
     return cor;
 }
 
 
-function computeUserCorrelation(id1, id2){
+/*
+ * return a number representing correlation
+ */
+function computeUserCorrelation(uid1, uid2){
 	// TODO: basically get_same_classes(id1, di2).length
-
+    return get_same_class(uid1, uid2).length;
 }
 
 function comp(t1, t2){
@@ -36,21 +43,30 @@ function comp(t1, t2){
 }
 
 /*
-* @param u: user class
-* @param candidates: a list of candidates
+* @param uid: a user id
+* @param all_user_id: a list of user_id
 * return a list of preferences [[id, val], [id, val], ...]
 */
-function rank_users(u, candidates){
-	var queue = new PriorityQueue(comp);
-	for (i = 0; i < candidates.length; i++) {
-		var cand = candidates[i];
-		var curr_correlation = computeUserCorrelation(u, cand);
-		var data_pair = [cand.uid, curr_correlation];
-		queue.push(data_pair);
+function rank_users(uid, all_user_id){
+    // console.log("object: "+uid);
+    // console.log("all other users: ");
+    // console.log(all_user_id);
+	let queue = new PriorityQueue(comp);
+    let l = Math.min(all_user_id.length, suggestionMax);
+    for (i = 0; i < all_user_id.length; i++) {
+		let cand_id = all_user_id[i];
+
+		if (cand_id !== uid) { // avoid compareing to itself
+            let curr_correlation = computeUserCorrelation(uid, cand_id);
+            let data_pair = [get_stu_id(cand_id), curr_correlation];
+            queue.push(data_pair);
+            l --;
+        }
 	}
-	var result = new Array(candidates.length);
-	for (i = 0; i < Math.min(candidates.length, suggestionMax) ; i++) {
-		result[n - i - 1] = queue.pop()[0]; 
+	// let result = new Array(candidates.length);
+	let result = new Array(l);
+	for (i = 0; i < l ; i++) {
+		result[l - i - 1] = queue.pop();
 	}
 	return result;
 }
@@ -69,14 +85,19 @@ return a list of list of indices
 for each user in the user_lists, find his preference ranking list (using rank_users())
 and then we combine all these ranking lists into a big list and return it
 */
-
-function complete_ranking_users(users) {
-    for (i = 0; i < users.length; i++) {
-        pList = rank_users(users[i], users);
-        pList.shift(); // delte the first entry, which is itself
-        users[i].preference = pList;
-		users[i].write();        
+function complete_ranking_users(all_user_id) {
+    for (i = 0; i < all_user_id.length; i++) {
+        let uid = all_user_id[i];
+        let pList = rank_users(uid, all_user_id);
+        // all_user_id[i].preference = pList;
+		// all_user_id[i].write();
+        update_preference(uid, all_user_id)
     }
+}
+
+function firstWaveSuggestion(){
+    let user_ids = get_userid_list();
+    complete_ranking_users(user_ids);
 }
 
 /*
@@ -85,27 +106,30 @@ function complete_ranking_users(users) {
 * Return the list, does not update directly to user
 */
 
-function further_improve_ranking(u, users){
-	pList = u.preference;
-	var newList = new Array(pList.length);
-	var queue = new PriorityQueue(comp);
+function further_improve_ranking(uid){
+	let pList = u.preference;
+	let l = Math.min(pList.length, improvedSuggestionMax);
+
+	let newList = new Array(l);
+	let queue = new PriorityQueue(comp);
 
 	for (i = 0; i < pList.length; i ++){
 
-		var origin_corr = pList[i][1];
-		var other_id = pList[i][0];
+		let origin_corr = pList[i][1];
+		let other_stu_id = pList[i][0];
+        let other_uid = fetch_user_id(other_stu_id);
 
-		var ux = users[other_id];
-
-		var answer_corr = correlation(u.answers, ux.answers);
-		var new_corr = answer_corr * origin_corr;
-		queue.push([other_id, new_corr]);
+		let answer_corr = correlation(get_user_answer(uid), get_user_answer(other_uid));
+		let new_corr = answer_corr * origin_corr;
+		queue.push([other_stu_id, new_corr]);
 	}
-	for (i = 0; i < Math.min(candidates.length, suggestionMax) ; i++) {
-		newList[n - i - 1] = queue.pop()[0]; 
+	for (i = 0; i < l ; i++) {
+		newList[l - i - 1] = queue.pop();
 	}
 	return newList;
 }
+
+
 
 /*
 * Use f_i_r to improve everyone
@@ -113,11 +137,154 @@ function further_improve_ranking(u, users){
 
 function further_improve_everyone(users){
 	for (i =0; i < users.length; i ++){
-		var u = users[i];
-		var new_list = further_improve_ranking(u, users);
-		u.preference = new_list;
-		u.write();
+		let uid = users[i];
+		let new_list = further_improve_ranking(uid);
+		// u.preference = further_improve_ranking(u, users);
+		// u.write();
+        update_preference(uid, new_list);
 	}
+}
+
+function secondWaveSuggestion() {
+    let user_ids = get_userid_list();
+    further_improve_everyone(user_ids);
+}
+
+
+/************************ Priority Queue ****************************/
+
+const topp = 0;
+const parent = i => ((i + 1) >>> 1) - 1;
+const left = i => (i << 1) + 1;
+const right = i => (i + 1) << 1;
+
+class PriorityQueue {
+    constructor(comparator = (a, b) => a > b) {
+        this._heap = [];
+        this._comparator = comparator;
+    }
+    size() {
+        return this._heap.length;
+    }
+    isEmpty() {
+        return this.size() == 0;
+    }
+    peek() {
+        return this._heap[topp];
+    }
+    push(...values) {
+        values.forEach(value => {
+            this._heap.push(value);
+            this._siftUp();
+        });
+        return this.size();
+    }
+    pop() {
+        const poppedValue = this.peek();
+        const bottom = this.size() - 1;
+        if (bottom > topp) {
+            this._swap(topp, bottom);
+        }
+        this._heap.pop();
+        this._siftDown();
+        return poppedValue;
+    }
+    replace(value) {
+        const replacedValue = this.peek();
+        this._heap[topp] = value;
+        this._siftDown();
+        return replacedValue;
+    }
+    _greater(i, j) {
+        return this._comparator(this._heap[i], this._heap[j]);
+    }
+    _swap(i, j) {
+        [this._heap[i], this._heap[j]] = [this._heap[j], this._heap[i]];
+    }
+    _siftUp() {
+        let node = this.size() - 1;
+        while (node > topp && this._greater(node, parent(node))) {
+            this._swap(node, parent(node));
+            node = parent(node);
+        }
+    }
+    _siftDown() {
+        let node = topp;
+        while (
+            (left(node) < this.size() && this._greater(left(node), node)) ||
+            (right(node) < this.size() && this._greater(right(node), node))
+            ) {
+            let maxChild = (right(node) < this.size() && this._greater(right(node), left(node))) ? right(node) : left(node);
+            this._swap(node, maxChild);
+            node = maxChild;
+        }
+    }
+}
+
+
+/************************ group match by class *********************/
+
+/**
+ * Class Structure: {subject: <String>, courseNumber: <String>}
+ * Group Structure: {name: <String>, students: [user_id_1, user_id_2, ...], classes: [class_1, class_2, ...]}
+ */
+
+const groupSuggestionLength = 2;
+
+function class_match(c1, c2){
+    return (c1["subject"] === c2["subject"]) && (c1["courseNumber"] === c2["courseNumber"]);
+}
+
+function group_corr(user_id, group, classes){
+    let group_classes = group["classes"];
+    for (let c in classes){
+        if (! group_classes.some(e => class_match(e, c))){ // if my class is not contained in the group, stop
+            return 0;
+        }
+    }
+    let group_students = group['students']; // list of id
+    let corr = 0; // The final corr should be > 0 since the students should have common classes to join
+    for (let sid in group_students){
+        // if (sid != null){
+        corr += computeUserCorrelation(sid, user_id)
+        // }
+    }
+    return corr / group_students.length;
+}
+
+
+function match_groups(){
+    //Get user id for creating group
+    var uid = fetch_user_id();
+    //Get 
+    var courses = [];
+    var course1 = {};
+    course1[document.getElementById('subject1').value] = document.getElementById('classnumber1').value;
+    var course2 = {};
+    course2[document.getElementById('subject2').value] = document.getElementById('classnumber2').value;
+    courses.push(course1, course2);
+
+    // let group_num = get_total_number_of_groups();
+    let all_group_ids = get_all_group_ids();
+    if (all_group_ids.length === 0){
+        return null;
+    }
+    let l = Math.min(groupSuggestionLength, all_group_ids.length); // final length of the returned array
+    let groups = new Array(l);
+    let fringe = new PriorityQueue(comp);
+    for (let i = 0; i < all_group_ids.length; i ++){
+        let id = all_group_ids[i];
+        let group = get_group_by_id(id);
+        let g_corr = group_corr(uid, group, courses);
+        if (g_corr !== 0){ // ignoring groups that don't fit
+            group["id"] = id;
+            fringe.push([group, g_corr]);
+        }
+    }
+    for (let i = 0; i < l; i ++){
+        groups[l - i - 1] = fringe.pop()[0];
+    }
+    return groups;
 }
 
 
@@ -128,73 +295,3 @@ function further_improve_everyone(users){
 
 
 
-
-
-
-const top = 0;
-const parent = i => ((i + 1) >>> 1) - 1;
-const left = i => (i << 1) + 1;
-const right = i => (i + 1) << 1;
-
-class PriorityQueue {
-  constructor(comparator = (a, b) => a > b) {
-    this._heap = [];
-    this._comparator = comparator;
-  }
-  size() {
-    return this._heap.length;
-  }
-  isEmpty() {
-    return this.size() == 0;
-  }
-  peek() {
-    return this._heap[top];
-  }
-  push(...values) {
-    values.forEach(value => {
-      this._heap.push(value);
-      this._siftUp();
-    });
-    return this.size();
-  }
-  pop() {
-    const poppedValue = this.peek();
-    const bottom = this.size() - 1;
-    if (bottom > top) {
-      this._swap(top, bottom);
-    }
-    this._heap.pop();
-    this._siftDown();
-    return poppedValue;
-  }
-  replace(value) {
-    const replacedValue = this.peek();
-    this._heap[top] = value;
-    this._siftDown();
-    return replacedValue;
-  }
-  _greater(i, j) {
-    return this._comparator(this._heap[i], this._heap[j]);
-  }
-  _swap(i, j) {
-    [this._heap[i], this._heap[j]] = [this._heap[j], this._heap[i]];
-  }
-  _siftUp() {
-    let node = this.size() - 1;
-    while (node > top && this._greater(node, parent(node))) {
-      this._swap(node, parent(node));
-      node = parent(node);
-    }
-  }
-  _siftDown() {
-    let node = top;
-    while (
-      (left(node) < this.size() && this._greater(left(node), node)) ||
-      (right(node) < this.size() && this._greater(right(node), node))
-    ) {
-      let maxChild = (right(node) < this.size() && this._greater(right(node), left(node))) ? right(node) : left(node);
-      this._swap(node, maxChild);
-      node = maxChild;
-    }
-  }
- }

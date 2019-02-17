@@ -19,9 +19,11 @@ function test_user_boxing() {
         classes[_class[0]] = _class[1];
     });
     let name = document.getElementById("name").value;
-    let preference = {"27056890": 2};
-    let uid = get_user_id();
+    let preference = {"27056890": 1};
+    let uid = fetch_user_id();
     u = new User(sid, answers, classes, name, preference, uid);
+    preference = {"27056890": 1};
+    update_preference(uid, preference);
 }
 
 function get_sid() {
@@ -29,14 +31,14 @@ function get_sid() {
     return user_token_to_sid(user_token);
 }
 
-function user_token_to_sid(token){
+function user_token_to_sid(token) {
     firebase.database().ref('UserId').on('value', function (snapshot) {
         data = snapshot.val();
     });
     return data[token]
 }
 
-function get_user_id() {
+function fetch_user_id() {
     return get_user_info()[3]
 }
 
@@ -60,8 +62,12 @@ function get_user_info() {
 
 }
 
-function create_user(email, password) {
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
+function create_user(email, password, url = null) {
+    firebase.auth().createUserWithEmailAndPassword(email, password).then(function () {
+        if (url != null) {
+            window.open(url);
+        }
+    }).catch(function (error) {
         // Handle Errors here.
         let errorCode = error.code;
         let errorMessage = error.message;
@@ -84,8 +90,12 @@ function button_signin() {
     console.log("Logging In")
 }
 
-function signin_user(email, password) {
-    firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
+function signin_user(email, password, url = null) {
+    firebase.auth().signInWithEmailAndPassword(email, password).then(function () {
+        if (url != null) {
+            window.open(url);
+        }
+    }).catch(function (error) {
         // Handle Errors here.
         let errorCode = error.code;
         let errorMessage = error.message;
