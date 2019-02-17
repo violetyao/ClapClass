@@ -28,11 +28,25 @@ $(document).ready(function () {
     })
 });
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 function signup() {
-    let email = $("#loginform > input[type=email]").val();
-    let password = $("#loginform > input[type=password]").val();
-    create_user(email, password);
-    console.log("Signing Up")
+    let name = $("#signupform > input[type=name]").val();
+    let email = $("#signupform > input[type=email]").val();
+    let password = $("#signupform > input[type=password]").val();
+    //create_user(email, password);
+    console.log("Signing Up");
+    signin_user(email, password);
+    let uid = null;
+    while (uid == null) {
+        uid = fetch_user_id()
+    }
+    console.log(uid);
+    firebase.database().ref("AllUsers/" + uid).set({
+        "Name": name
+    })
 }
 
 function login() {

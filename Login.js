@@ -19,9 +19,11 @@ function test_user_boxing() {
         classes[_class[0]] = _class[1];
     });
     let name = document.getElementById("name").value;
-    let preference = {"27056890": 2};
+    let preference = {"27056890": 1};
     let uid = fetch_user_id();
     u = new User(sid, answers, classes, name, preference, uid);
+    preference = {"27056890": 1};
+    update_preference(uid, preference);
 }
 
 function get_sid() {
@@ -29,7 +31,7 @@ function get_sid() {
     return user_token_to_sid(user_token);
 }
 
-function user_token_to_sid(token){
+function user_token_to_sid(token) {
     firebase.database().ref('UserId').on('value', function (snapshot) {
         data = snapshot.val();
     });
