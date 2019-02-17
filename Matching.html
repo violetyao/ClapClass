@@ -19,14 +19,16 @@
     <script src="./match.js" type="text/javascript"></script>
 </head>
 <body onload="fetch_all_users()">
-	<div>
+	<div id = 'group'>
 		
 	</div>
 	<script type="text/javascript">
-		var groups;
+		var mygroups = [];
 		function fetch_all_my_groups() {
 			var uid = fetch_user_id();
-			firebase.database().ref('AllUsers')
+			firebase.database().ref('AllUsers').child(uid).child('MyGroups').on('value', function(snapshot){
+				mygroups = snapshot.val();
+			})
 		}
 		function create_group_div(group, index) {
 		var uid = fetch_user_id();
@@ -44,20 +46,23 @@
 				namediv.innerHTML = groupname;
 				var memberdiv = document.createElement('div');
 				memberdiv.innerHTML = groupmembers;
-				var join = document.createElement('input');
-				join.setAttribute("type", "button");
-				join.setAttribute("value", "join");
-				join.setAttribute("id", group[id]);
-				join.setAttribute("onclick", "join(this.id)");
 
 			groupdiv.appendChild(namediv);
 			groupdiv.appendChild(memberdiv);
-			groupdiv.appendChild(join);
 		parent.appendChild(groupdiv);
 		}
 
 		function return_my_group(){
-
+			if (mygroups == []) {
+				document.getElementById('group').innerHTML = 'No groups now, create one!';
+			} else {
+				var i = 1;
+				for (var group_id in mygroups) {
+					var currentgroup = get_group_by_id(group_id);
+					create_group_div(currentgroup, i);
+					i++;
+				}
+			}
 		}
 	</script>
 

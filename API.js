@@ -35,7 +35,7 @@ var all_users_info;
 var all_classes_info;
 var all_groups;
 
-function fetch_all_users() {
+function fetch_all_data() {
     firebase.database().ref('AllUsers').on('value', function (snapshot) {
         all_users_info = snapshot.val();
     })
@@ -193,18 +193,11 @@ function get_user_answer(uid) {
 }
 
 function get_group_by_id(group_id) {
-    firebase.database().ref("Group/" + group_id).once("value").then(function (snapshot) {
-        let group_data = snapshot.val();
-        return group_data;
-    });
+    return all_groups;
 }
 
 function get_total_number_of_groups() {
-    firebase.database().ref("Group").once("value").then(function (snapshot) {
-        let group_data = snapshot.val();
-        return group_data.length;
-
-    })
+    return all_groups.length;
 }
 
 function get_all_group_ids() {
@@ -250,7 +243,7 @@ function join_group(groupId) {
     });
 
     // Add group to student
-    let ref = firebase.database().ref("/AllUsers/" + uid);
+    ref = firebase.database().ref("/AllUsers/" + uid + "/MyGroups");
     ref.once("value").then(function (snapshot) {
         currentGroups = snapshot.val();
         if (!(groupId in currentStudents)) {
