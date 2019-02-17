@@ -210,30 +210,42 @@ function get_all_group_ids() {
         group_data.forEach(function (group) {
             keys.push(group.key);
         });
-        return keys
-    })
+        return keys;
+    });
+    return [];
 }
 
 // Creates a group
-function create_group(courses, name, uid) {
-	let groupRef = firebase.database().ref("Group");
-	let groupId = groupRef.push().key;
-	let group = {
-		"classes": courses,
-		"students": [uid],
-		"name": name,
-	};
-	groupRef.child(groupId).set(group);
+function create_group() {
+	//Get user id for creating group
+	var uid = fetch_user_id();
+	//Get 
+	var courses = [];
+	var course1 = {};
+	course1[document.getElementById('subject1').value] = document.getElementById('classnumber1').value;
+	var course2 = {};
+	course2[document.getElementById('subject2').value] = document.getElementById('classnumber2').value;
+	courses.push(course1, course2);
+    let groupRef = firebase.database().ref("Group");
+    let groupId = groupRef.push().key;
+    let name = document.getElementById('new_name').value;
+    let group = {
+        "classes": courses,
+        "students": [uid],
+        "name": name,
+    };
+    groupRef.child(groupId).set(group);
 }
 
 // Join a group
-function join_group(uid, groupId) {
-	let ref = firebase.database().ref("/Group/" + groupId + "/students");
-	ref.once("value").then(function (snapshot) {
-		currentStudents = snapshot.val();
-		if (!(uid in currentStudents)) {
-			currentStudents.push(uid);
-			snapshot.ref.set(currentStudents);
-		}
-	});
+function join_group(groupId) {
+	var uid = fetch_user_id();
+    let ref = firebase.database().ref("/Group/" + groupId + "/students");
+    ref.once("value").then(function (snapshot) {
+        currentStudents = snapshot.val();
+        if (!(uid in currentStudents)) {
+            currentStudents.push(uid);
+            snapshot.ref.set(currentStudents);
+        }
+    });
 }

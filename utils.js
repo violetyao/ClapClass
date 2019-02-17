@@ -253,16 +253,29 @@ function group_corr(user_id, group, classes){
 }
 
 
-function match_groups(user_id, classes){
+function match_groups(){
+    //Get user id for creating group
+    var uid = fetch_user_id();
+    //Get 
+    var courses = [];
+    var course1 = {};
+    course1[document.getElementById('subject1').value] = document.getElementById('classnumber1').value;
+    var course2 = {};
+    course2[document.getElementById('subject2').value] = document.getElementById('classnumber2').value;
+    courses.push(course1, course2);
+
     // let group_num = get_total_number_of_groups();
     let all_group_ids = get_all_group_ids();
+    if (all_group_ids.length === 0){
+        return null;
+    }
     let l = Math.min(groupSuggestionLength, all_group_ids.length); // final length of the returned array
     let groups = new Array(l);
     let fringe = new PriorityQueue(comp);
     for (let i = 0; i < all_group_ids.length; i ++){
         let id = all_group_ids[i];
         let group = get_group_by_id(id);
-        let g_corr = group_corr(user_id, group, classes);
+        let g_corr = group_corr(uid, group, courses);
         if (g_corr !== 0){ // ignoring groups that don't fit
             group["id"] = id;
             fringe.push([group, g_corr]);
