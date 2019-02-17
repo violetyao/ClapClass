@@ -252,6 +252,8 @@ function group_corr(user_id, group, classes){
         corr += computeUserCorrelation(group_students[i], user_id)
         // }
     }
+    console.log("total cor:");
+    console.log(corr);
     return corr / group_students.length;
 }
 
@@ -287,6 +289,9 @@ function match_groups(){
             console.log([group, g_corr]);
             fringe.push([group, g_corr]);
         }
+    }
+    if (fringe.isEmpty()){
+        return null;
     }
     for (let i = 0; i < l; i ++){
         groups[l - i - 1] = fringe.pop()[0];
