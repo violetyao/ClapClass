@@ -1,7 +1,5 @@
 # ClapClass.io -- A Treehacks 2019 Project
 
-A smart platform to learn together
-
 ## Inspiration
 We sit randomly in a large lecture hall, rush out when class ends. It’s never easy to find new, trustworthy buddies with similar interests and schedule. 
 
