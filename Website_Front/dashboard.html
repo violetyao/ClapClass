@@ -595,7 +595,7 @@
               <div id="u172_div" class=""></div>
               <!-- Unnamed () -->
               <div id="u173" class="text">
-                <p><span>Match</span></p>
+                <img src="./images/match.png" alt="" STYLE="position:absolute; TOP:-30px; LEFT:-20px; WIDTH:690px; HEIGHT:440px">
               </div>
             </div>
 
@@ -1048,20 +1048,6 @@
 		    		<option value = "61C">61C</option>
 				</select>
 			    </div>
-			    <div>
-				<select id = "subject2">
-		    	<option selected disabled>Subject</option>
-		    	<option value="COMPSCI">COMPSCI</option>
-		    <!--<option value="MATH">MATH</option> -->
-
-			    </select>
-			    <select id = "classnumber2">
-		    	<option selected disabled></option>
-		    	<option value = "61A">61A</option>
-		    	<option value = "61B">61B</option>
-		        <option value = "61C">61C</option>
-		        </select>
-		    	</div>
                 </span></p>
 
                 <button onclick="add_class()">Add Class</button>
@@ -1069,8 +1055,8 @@
   				function add_class() {
             alert("Add class successfully!");
             var uid = fetch_user_id();
-      			var class_lst = get_user_class(uid);
-      			add_classes(uid, class_lst);
+    			  var classes = get_user_class(uid);
+            add_classes(uid, classes);
   				}
 				</script>
             </div>
