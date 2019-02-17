@@ -35,6 +35,13 @@ function update_classes(uid, classes) {
     })
 }
 
+function update_answers(uid, answers) {
+    firebase.database().ref("AllUsers/" + uid).update({
+        "Answer": answers
+    })
+
+}
+
 function add_class(uid, _class) {
 
 }
