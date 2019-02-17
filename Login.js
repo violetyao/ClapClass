@@ -29,7 +29,7 @@ function get_sid() {
     return user_token_to_sid(user_token);
 }
 
-function user_token_to_sid(token){
+function user_token_to_sid(token) {
     firebase.database().ref('UserId').on('value', function (snapshot) {
         data = snapshot.val();
     });
@@ -37,6 +37,7 @@ function user_token_to_sid(token){
 }
 
 function fetch_user_id() {
+    sleep(1000);
     return get_user_info()[3]
 }
 

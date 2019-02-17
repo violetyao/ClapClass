@@ -13,6 +13,8 @@
 	get_same_user(class1, class2) // return a list of all the same users of two classes
 	get_user_preference(uid) // return a dictionary of the preference of certain user {uid：rank}
 	get_user_answer(uid) // return answer of the survey
+ 	get_group_by_id(group_id) // return a group object corresponding to the group id
+ 	get_total_number_of_groups() // return total number of groups
 */
 
 var config = {
@@ -183,5 +185,20 @@ function get_user_answer(uid){
 		answers.push(all_users_info[uid]["Answer"][index]);
 	}
 	return answers;
-} 
+}
+
+function get_group_by_id(group_id){
+	firebase.database().ref("Group/"+group_id).once("value").then(function (snapshot) {
+		let group_data = snapshot.val();
+		console.log(group_data);
+		return group_data;
+	});
+}
+
+function get_total_number_of_groups() {
+	firebase.database().ref("Group").once("value").then(function (snapshot) {
+		let group_data = snapshot.val();
+		console.log(group_data.length);
+	})
+}
 
