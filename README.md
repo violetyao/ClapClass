@@ -24,12 +24,17 @@ Simple Welcome page with login/Signup button
 Collect info about user study philosophy
 
 ## How we built it
+We used Firebase as our backend. We used vanilla JS and jQuery as our frontend. We also used python packages including beautifulsoup, requests, and json to acquire and process class information.
 
 ## Challenges we ran into
+Race conditions are hard to deal with. Hard to rewrite code to accommodate callback functions.
 
 ## Accomplishments that we are proud of
+Crawled 6000+ classes in less than an hour
 
 ## What we learned
+How to use firebase APIs and NoSQL databases in general
+
 Treehacks is better than Calhacks!
 
 Boyuan doesn't need sleep. :)
