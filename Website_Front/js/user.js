@@ -29,9 +29,7 @@ function update_preference(uid, preference) {
     })
 }
 
-function update_classes(uid, classes_list) {
-    let classes = {};
-    classes_list.forEach(function());//TODO
+function update_classes(uid, classes) {
     firebase.database().ref("AllUsers/" + uid).update({
         "Class": classes
     })

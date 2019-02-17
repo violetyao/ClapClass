@@ -18,41 +18,49 @@
     <script src="./utils.js" type="text/javascript"></script>
     <script src="./match.js" type="text/javascript"></script>
 </head>
-<body onload="fetch_all_users()">
+<body onload="fetch_all_data()">
 	<div id = 'group'>
 		
 	</div>
 	<script type="text/javascript">
-		var mygroups = [];
+        var mygroups = [];
+        var localid = location.search.slice(5);
+
+        if (localid != null) {
+            fetch_all_my_groups();
+            console.log(mygroups);
+        }
+
 		function fetch_all_my_groups() {
-			var uid = fetch_user_id();
-			firebase.database().ref('AllUsers').child(uid).child('MyGroups').on('value', function(snapshot){
+			let uid = localid;
+			firebase.database().ref('AllUsers/'+uid).child('MyGroups').on('value', function(snapshot){
 				mygroups = snapshot.val();
 			})
 		}
 		function create_group_div(group, index) {
-		var uid = fetch_user_id();
-		var groupname = "Group name:" + group["name"];
-		var groupmembers = "Group Members:";
-		for (var uid in group["student"]) {
-			groupmembers += get_user_name_uid(uid);
-		}
+            var uid = localid;
+            var groupname = "Group name:" + group["name"];
+            var groupmembers = "Group Members:";
+            for (var uid in group["student"]) {
+                groupmembers += get_user_name_uid(uid);
+            }
 
-		var parent = document.getElementById('group');
-			var groupdiv = document.createElement('div');
-			groupdiv.innerHTML = "recommandgroup"+groupPage+":";
+            var parent = document.getElementById('group');
+                var groupdiv = document.createElement('div');
+                groupdiv.innerHTML = "recommandgroup"+groupPage+":";
 
-				var namediv = document.createElement('div');
-				namediv.innerHTML = groupname;
-				var memberdiv = document.createElement('div');
-				memberdiv.innerHTML = groupmembers;
+                    var namediv = document.createElement('div');
+                    namediv.innerHTML = groupname;
+                    var memberdiv = document.createElement('div');
+                    memberdiv.innerHTML = groupmembers;
 
-			groupdiv.appendChild(namediv);
-			groupdiv.appendChild(memberdiv);
-		parent.appendChild(groupdiv);
+                groupdiv.appendChild(namediv);
+                groupdiv.appendChild(memberdiv);
+            parent.appendChild(groupdiv);
 		}
 
 		function return_my_group(){
+		    console.log(mygroups);
 			if (mygroups == []) {
 				document.getElementById('group').innerHTML = 'No groups now, create one!';
 			} else {
@@ -64,6 +72,7 @@
 				}
 			}
 		}
+
 	</script>
 
 </body>

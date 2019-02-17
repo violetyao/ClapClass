@@ -1,0 +1,29 @@
+Functions:
+
+—————— phase 1:
+
+Sign up: on index.html (password have to be at least 6 characters)
+
+Sign in: on index.html
+
+—————— phase 2:
+
+NOTE: MOST OF THE INFOS ARE IN CONSOLE, ACTIONS MAY BE DONE WITHOUT DISPLAYING STATUS ONTO THE PAGE
+
+Signing in directly takes the user to the groupPage.html
+
+Select the desired classes to form / search a group, and then click MATCH:
+
+1. If there are matched groups found, then we return the recommended groups, along with a JOIN button;
+
+2. If there’s no group for the chosen classes, we provide the CREATE button
+
+If we click on the MANAGE MY GROUPS button, we can see all the groups that the user has joined
+
+———————— Other notes:
+
+Major obstacles: fucking asynchronous problems: the code continue to run before the data are fetched from firebase.
+
+Emphasize the matching algorithm: we carefully compare the correlations between the user and other students in the group to rank the groups and suggest them to the user. WE ONLY RETURN GROUPS THAT ENTIRELY COVER THE CLASSES SELECTED BY THE USER.
+
+
