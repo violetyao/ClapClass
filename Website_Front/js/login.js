@@ -37,14 +37,14 @@ function signup() {
     let email = $("#signupform > input[type=email]").val();
     let password = $("#signupform > input[type=password]").val();
     let studentid = $("#signupform > input[type=SID]").val();
-    create_user(email, password, name, studentid, "./groupPage.html");
+    create_user(email, password, name, studentid, "./dashboard.html");
     console.log("Signing Up");
 }
 
 function login() {
     let email = $("#loginform > input[type=email]").val();
     let password = $("#loginform > input[type=password]").val();
-    signin_user(email, password, "./groupPage.html");
+    signin_user(email, password, "./dashboard.html");
     console.log("Signing In");
     console.log("User ID: " + fetch_user_id() + " signed in")
 }
