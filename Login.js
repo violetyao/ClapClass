@@ -1,3 +1,4 @@
+
 function print_user_token() {
     console.log(get_user_info());
 
