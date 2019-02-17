@@ -21,7 +21,7 @@ Login/Signup
 Dashboard
 Find buddy
 My Groups
-
+![alt text](https://github.com/violetyao/treehacks/blob/master/ClapClass_processon%206.28%20pm.png)
 Interface design can be found at ClapClass_processon. 
 
 ### Home
