@@ -54,8 +54,8 @@ function check_uid(uid) {
     console.log("inside console: ");
     console.log(uid);
     var flag = false;
-    // console.log("all ids:");
-    // console.log(allId);
+    console.log("all ids:");
+    console.log(allId);
     for (var userid in allId) {
         if (userid == uid) {
             flag = true;
