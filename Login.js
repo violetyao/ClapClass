@@ -39,11 +39,6 @@ function user_token_to_sid(token) {
 }
 
 function fetch_user_id() {
-    let n = 0;
-    while (setTimeout(get_user_info, 200) == null && n < 2000) {
-        n += 1;
-
-    }
     if (get_user_info() != null) {
         return get_user_info()[3];
     }
@@ -70,8 +65,16 @@ function get_user_info() {
 
 }
 
-function create_user(email, password, url = null) {
+function create_user(email, password, name, studentid, url = null) {
     firebase.auth().createUserWithEmailAndPassword(email, password).then(function () {
+        var uid = fetch_user_id();
+        console.log(uid);
+        firebase.database().ref("AllUsers/" + uid).set({
+            "Name": name,
+            "SID": studentid
+        });
+        firebase.database().ref("UserId/" + uid).set(
+            studentid);
         if (url != null) {
             window.open(url);
         }

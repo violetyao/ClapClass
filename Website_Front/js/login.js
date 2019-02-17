@@ -29,24 +29,16 @@ $(document).ready(function () {
 });
 
 function signup() {
+    if (fetch_user_id() != null) {
+        window.open("../groupPage.html");
+    }
+
     let name = $("#signupform > input[type=name]").val();
     let email = $("#signupform > input[type=email]").val();
     let password = $("#signupform > input[type=password]").val();
     let studentid = $("#signupform > input[type=SID]").val();
-    create_user(email, password, "../groupPage.html");
+    create_user(email, password, name, studentid, "../groupPage.html");
     console.log("Signing Up");
-    //signin_user(email, password);
-    var uid = null;
-    while (uid == null) {
-        uid = fetch_user_id()
-    }
-    console.log(uid);
-    firebase.database().ref("AllUsers/" + uid).set({
-        "Name": name,
-        "SID": studentid
-    });
-    firebase.database().ref("UserId/" + uid).set(
-        studentid);
 }
 
 function login() {
