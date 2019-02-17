@@ -29,10 +29,22 @@ function update_preference(uid, preference) {
     })
 }
 
-function update_classes(uid, classes) {
+function update_classes(uid, classes_list) {
+    classes = {};
+    classes_list.forEach(function (_class) {
+        _class = _class.split(" ");
+        if (classes[_class[0]] === undefined) {
+            classes[_class[0]] = {0: _class[1]};
+        } else {
+            let ind = classes[_class[0]].length;
+            classes[_class[0]][ind] = _class[1];
+        }
+    });
+    return classes;
+    /*
     firebase.database().ref("AllUsers/" + uid).update({
         "Class": classes
-    })
+    })*/
 }
 
 function update_answers(uid, answers) {

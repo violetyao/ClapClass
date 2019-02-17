@@ -73,7 +73,7 @@ function test_user_boxing() {
     let name = document.getElementById("name").value;
     let preference = {"27056890": 1};
     let uid = fetch_user_id();
-    u = new git
+    u = new
     User(sid, answers, classes, name, preference, uid);
     preference = {"27056890": 1};
     update_preference(uid, preference);
