@@ -242,7 +242,7 @@ function group_corr(user_id, group, classes){
         }
     }
     let group_students = group['students']; // list of id
-    let corr = 0;
+    let corr = 0; // The final corr should be > 0 since the students should have common classes to join
     for (let sid in group_students){
         // if (sid != null){
         corr += computeUserCorrelation(sid, user_id)
@@ -251,8 +251,27 @@ function group_corr(user_id, group, classes){
     return corr / group_students.length;
 }
 
-function group_corr_by_id(user_id, group_id, classes){
-    
+
+
+function match_groups(user_id, classes){
+    // let group_num = get_total_number_of_groups();
+    let all_group_ids = get_all_group_ids();
+    let l = Math.min(groupSuggestionLength, all_group_ids.length);
+    let groups = new Array(l);
+    let fringe = new PriorityQueue(comp);
+    for (let i = 0; i < all_group_ids.length; i ++){
+        let id = all_group_ids[i];
+        let group = get_group_by_id(id);
+        let g_corr = group_corr(user_id, group, classes);
+        if (g_corr !== 0){ // ignoring groups that don't fit
+            group["id"] = id;
+            fringe.push([group, g_corr]);
+        }
+    }
+    for (let i = 0; i < l; i ++){
+        groups[l - i - 1] = fringe.pop()[0];
+    }
+    return groups;
 }
 
 
