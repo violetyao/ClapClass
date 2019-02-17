@@ -1,0 +1,115 @@
+body{
+
+	margin: 0px;
+	padding: 0px;
+	/*background-color: fuchsia;*/
+	 /*background: #cc2b5e;
+  background: -webkit-linear-gradient(to right, #cc2b5e, #753a88); 
+  background: linear-gradient(to right, #cc2b5e, #753a88);*/
+   background-color:turquoise;
+}
+
+#box{
+	height: 200px;
+	width: 1000px;
+	background-color: #2D2D2D;
+	border-radius: 5px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+
+#main{
+	height: 400px;
+	width: 450px;
+	background-color: white;
+	border-radius: 10px;
+	position: absolute;
+	top: 50%;
+	left: 70%;
+	transform: translate(-50%,-50%);
+	z-index: 99;
+}
+
+#loginform,#signupform{
+
+	position: absolute;
+	top: 5%;
+	left: 55%;
+	transform: translate(-50%.-50%);
+	z-index: 999;
+}
+
+#signupform{
+	top: -30%;
+	left: 50%;
+	visibility: hidden;
+}
+#loginform h1,#signupform h1{
+	font-family: arial;
+	font-size: 25px;
+	color: turquoise;
+}
+
+#loginform input,#signupform input{
+	height: 40px;
+	width: 300px;
+	border: 0px;
+	outline: none;
+	border-bottom: 1px solid black;
+	margin: 5px;
+}
+
+#loginform button,#signupform button{
+	height: 35px;
+	width: 130px;
+	background-color: turquoise;
+	font-family: monospace;
+	font-size: 16px;
+	color: white;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	margin-top: 30px;
+	margin-left: 175px;
+}
+
+#login_btn,#signup_btn{
+	height: 35px;
+	width: 120px;
+	background-color: transparent;
+	color: white;
+	border: 1px solid white;
+	border-radius: 5px;
+	outline: none;
+	position: absolute;
+	left: 75%;
+	top: 65%;
+	transform: translate(-50%,-50%);
+
+}
+
+#signup_btn{
+	left: 25%;
+}
+
+#login_btn:hover,#signup_btn:hover{
+background-color: white;
+color: #2d2d2d;
+cursor: pointer;
+}
+
+#login_msg,#signup_msg{
+	font-family: arial;
+	font-size: 25px;
+	color: white;
+	position: absolute;
+	top:35%;
+	left: 75%;
+	transform: translate(-50%,-50%);
+}
+
+#signup_msg{
+	left: 25%;
+}
