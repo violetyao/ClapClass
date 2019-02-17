@@ -26,7 +26,7 @@
     <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-functions.js"></script>
     <script src="./js/API.js"></script>
     <script src="./js/user.js"></script>
-    <script src="./js/login.js" type="text/javascript"></script>
+    <script src="./js/Login.js" type="text/javascript"></script>
     <script src="./js/utils.js" type="text/javascript"></script>
     <script src="./js/match.js" type="text/javascript"></script>
     <!-- <script type="text/javascript">
@@ -403,6 +403,37 @@
         </div>
       </div>
 
+      <!-- Survey -->
+      <div id="u128" class="ax_default" data-width="190" data-height="40">
+
+        <!-- menu (Rectangle) -->
+        <div id="u129" class="ax_default heading_1" data-label="menu">
+          <div id="u129_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u130" class="text" onclick="load_survey()">
+            <p><span>Work Philosophy</span></p>
+          </div>
+        </div>
+
+        <!-- icon-team (Image) -->
+        <div id="u131" class="ax_default image" data-label="icon-team">
+          <img id="u131_img" class="img " src="img/dashboard/icon-tags_u131.png"/>
+          <!-- Unnamed () -->
+          <div id="u132" class="text" style="display:none; visibility: hidden">
+            <p><span></span></p>
+          </div>
+        </div>
+
+        <!-- undermenu (Rectangle) -->
+        <div id="u133" class="ax_default box_2" data-label="undermenu" selectiongroup="left-menu" onclick="window.open('survey.html')">
+          <img id="u133_img" class="img " src="img/dashboard/undermenu_u75.png"/>
+          <!-- Unnamed () -->
+          <div id="u134" class="text" style="display:none; visibility: hidden">
+            <p><span></span></p>
+          </div>
+        </div>
+      </div>
+
       <!-- Unnamed (Group) -->
       <!-- <div id="u128" class="ax_default" data-width="190" data-height="40">
  -->
@@ -720,6 +751,14 @@
                         }
                       }
 
+                    }
+
+                    /*
+                      Function to open the surveyjs
+                    */
+                    function load_survey() {
+                      console.log("ss");
+                      myWindow = window.open("./survey.html");
                     }
 
                   </script>

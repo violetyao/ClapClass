@@ -148,7 +148,7 @@ var json = {
           ]
         }
       ],
-      completedHtml: "<p><h1>Thank you for sign up with us!</h1></p>"
+      completedHtml: "<p><h1>Thank you for sharing your work philosophy with us!</h1></p>"
 };
 
 window.survey = new Survey.Model(json);
@@ -156,9 +156,7 @@ window.survey = new Survey.Model(json);
 survey
     .onComplete
     .add(function (result) {
-        document
-            .querySelector('#surveyResult')
-            .innerHTML = "result: " + JSON.stringify(result.data);
+        //document.querySelector('#surveyResult').innerHTML = "result: " + JSON.stringify(result.data);
         firebase.database().ref("AllUsers/" + fetch_user_id()).child("Answer").set(result.data);
     });
 
