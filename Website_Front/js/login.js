@@ -33,7 +33,7 @@ function sleep(ms) {
 }
 
 function signup() {
-    let name = $("#signupform > input[type=name]");
+    let name = $("#signupform > input[type=name]").val();
     let email = $("#signupform > input[type=email]").val();
     let password = $("#signupform > input[type=password]").val();
     //create_user(email, password);
@@ -44,7 +44,9 @@ function signup() {
         uid = fetch_user_id()
     }
     console.log(uid);
-    u = new User("NAN", {"Question": "Answer"}, {"Class": "Numbers"}, name, {"SID": "Value"}, uid);
+    firebase.database().ref("AllUsers/" + uid).set({
+        "Name": name
+    })
 }
 
 function login() {
