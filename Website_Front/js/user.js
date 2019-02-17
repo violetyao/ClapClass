@@ -29,19 +29,54 @@ function update_preference(uid, preference) {
     })
 }
 
-function update_classes(uid, classes) {
+function add_classes(uid, classes_list) {
+    let classes = {};
+    classes_list.forEach(function (_class) {
+        _class = _class.split(" ");
+        if (classes[_class[0]] === undefined) {
+            classes[_class[0]] = {0: _class[1]};
+        } else {
+            let ind = Object.keys(classes[_class[0]]).length;
+            classes[_class[0]][ind] = _class[1];
+        }
+    });
     firebase.database().ref("AllUsers/" + uid).update({
         "Class": classes
     })
+}
+
+function set_classes(uid, classes_list) {
+    let classes = {};
+    classes_list.forEach(function (_class) {
+        _class = _class.split(" ");
+        if (classes[_class[0]] === undefined) {
+            classes[_class[0]] = {0: _class[1]};
+        } else {
+            let ind = Object.keys(classes[_class[0]]).length;
+            classes[_class[0]][ind] = _class[1];
+        }
+    });
+    firebase.database().ref("AllUsers/" + uid).set({
+        "Class": classes
+    })
+}
+
+function drop_classes(uid, classes_list) {
+    firebase.database().ref('AllUsers/' + uid + "/Class").on('value', function (snapshot) {
+        classes = snapshot.val();
+        curr_classes = [];
+        subjects = Object.keys(classes);
+        subjects.forEach(function (subject) {
+            curr_classes.push(classes[subject])
+        });
+        return curr_classes;
+
+    });
 }
 
 function update_answers(uid, answers) {
     firebase.database().ref("AllUsers/" + uid).update({
         "Answer": answers
     })
-
-}
-
-function add_class(uid, _class) {
 
 }

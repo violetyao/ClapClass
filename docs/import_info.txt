@@ -11,6 +11,6 @@ Put these lines of code in the <head></head> to make all functions work
 <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-functions.js"></script>
 <script src="./API.js"></script>
 <script src="./user.js"></script>
-<script src="./login.js" type="text/javascript"></script>
+<script src="./Login.js" type="text/javascript"></script>
 <script src="./utils.js" type="text/javascript"></script>
 <script src="./match.js" type="text/javascript"></script>
