@@ -196,3 +196,15 @@ function create_group(courses, name, uid) {
 	};
 	groupRef.child(groupId).set(group);
 }
+
+// Join a group
+function join_group(uid, groupId) {
+	let ref = firebase.database().ref("/Group/" + groupId + "/students");
+	ref.once("value").then(function (snapshot) {
+		currentStudents = snapshot.val();
+		if (!(uid in currentStudents)) {
+			currentStudents.push(uid);
+			snapshot.ref.set(currentStudents);
+		}
+	});
+}
