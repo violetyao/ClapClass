@@ -75,6 +75,7 @@
 			groupdiv.appendChild(join);
 		parent.appendChild(groupdiv);
 	}
+
 	function create_new_group(){
 		var parent = document.getElementById('group');
 			var groupdiv = document.createElement('div');
@@ -83,14 +84,17 @@
 				name.setAttribute('type', 'text');
 				name.setAttribute('id', 'new_name');
 				var create_button = document.createElement('button');
+
 				create_button.setAttribute('value', "create");
 				create_button.setAttribute("onclick", "create_group()");
 			groupdiv.appendChild(name);
 			groupdiv.appendChild(create_button);
 		parent.appendChild(groupdiv);
 	}
+
 	function get_group() {
 		var recommandgroups = match_groups();
+		document.getElementById('group').innerHTML = "";
 		if (recommandgroups == null) {
 			create_new_group();
 		} else {
