@@ -318,7 +318,7 @@
           <div id="u108_div" class=""></div>
           <!-- Unnamed () -->
           <div id="u109" class="text">
-            <p><span>Add Class</span></p>
+            <p><span>Change Class</span></p>
           </div>
         </div>
 
@@ -1009,7 +1009,7 @@
               <div id="u240_div" class=""></div>
               <!-- Unnamed () -->
               <div id="u241" class="text">
-                <p><span>Average</span></p>
+                <p><span>Add Class</span></p>
               </div>
             </div>
 
@@ -1027,8 +1027,45 @@
               <div id="u244_div" class=""></div>
               <!-- Unnamed () -->
               <div id="u245" class="text">
-                <p><span>Loading ...</span></p>
-              </div>
+                <p><span>
+                	<div>
+                	<select id = "subject1">
+		            <option selected disabled>Subject</option>
+		    		<option value="COMPSCI">COMPSCI</option>
+        			<option value="COMPSCI">PHILOS</option>
+					</select>
+				<select id = "classnumber1">
+		    		<option selected disabled></option>
+		    		<option value = "61A">61A</option>
+		    		<option value = "61B">61B</option>
+		    		<option value = "61C">61C</option>
+				</select>
+			    </div>
+			    <div>
+				<select id = "subject2">
+		    	<option selected disabled>Subject</option>
+		    	<option value="COMPSCI">COMPSCI</option>
+		    <!--<option value="MATH">MATH</option> -->
+			    
+			    </select>
+			    <select id = "classnumber2">
+		    	<option selected disabled></option>
+		    	<option value = "61A">61A</option>
+		    	<option value = "61B">61B</option>
+		        <option value = "61C">61C</option>
+		        </select>
+		    	</div>
+                </span></p>
+
+                <button onclick="add_class()">Add Class</button>
+                <script>
+  				function add_class() {
+   			 	var uid = fetch_user_id();
+    			//get_user_class(uid);
+    			//TODO: add class to database user class list
+    			alert("Add class successfully!");
+  				}
+				</script>
             </div>
 
             <!-- title (Rectangle) -->
@@ -1072,7 +1109,7 @@
               <div id="u254_div" class=""></div>
               <!-- Unnamed () -->
               <div id="u255" class="text">
-                <p><span>Profit</span></p>
+                <p><span>Drop Class</span></p>
               </div>
             </div>
 
