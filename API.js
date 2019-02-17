@@ -51,7 +51,11 @@ function fetch_all_data() {
 }
 
 function check_uid(uid) {
+    console.log("inside console: ");
+    console.log(uid);
     var flag = false;
+    console.log("all ids:");
+    console.log(allId);
     for (var userid in allId) {
         if (userid == uid) {
             flag = true;
@@ -135,9 +139,11 @@ function get_user_class(userid) {
     check_uid(userid);
     console.log("user: " + userid);
     return all_users_info[userid]["Class"];
-
 }
 
+function get_user_class_subject(userid, subject) {
+	return get_user_class(userid)[subject];
+}
 // return all users of a certain class
 function get_class_user(class1) {
     for (var subject in class1) {
@@ -150,12 +156,29 @@ function get_same_class(userid1, userid2) {
     var sameclass = [];
     var classes1 = get_user_class(userid1);
     var classes2 = get_user_class(userid2);
-    for (var i = 0; i < classes1.length; i++) {
-        for (var j = 0; j < classes2.length; j++) {
-            if (classes1[i] == classes2[j]) {
-                sameclass.push(classes1[i]);
-            }
-        }
+    
+    var user1list = [];
+    for (var subject in classes1) {
+    	var classcurrentsubject = get_user_class_subject(userid1, subject)
+    	for (var classnum in classcurrentsubject) {
+    		user1list.push(subject + classcurrentsubject[classnum]);
+    	}
+    }
+
+    var user2list = [];
+    for (var subject in classes2) {
+    	var classcurrentsubject = get_user_class_subject(userid2, subject)
+    	for (var classnum in classcurrentsubject) {
+    		user2list.push(subject + classcurrentsubject[classnum]);
+    	}
+    }
+
+    for (var i = 0; i < user1list.length; i++) {
+    	for (var j = 0; j < user2list.length; j++) {
+    		if (user1list[i] == user2list[j]) {
+    			sameclass.push(user1list[i]);
+    		}
+    	}
     }
     return sameclass;
 }
@@ -193,7 +216,7 @@ function get_user_answer(uid) {
 }
 
 function get_group_by_id(group_id) {
-    return all_groups;
+    return all_groups[group_id];
 }
 
 function get_total_number_of_groups() {
