@@ -130,7 +130,7 @@ function create_user(email, password, name, studentid, url = null) {
         firebase.database().ref("UserId/" + uid).set(
             studentid);
         if (url != null) {
-            //window.open(url);
+            window.open(url);
         }
     }).catch(function (error) {
         // Handle Errors here.
@@ -172,7 +172,7 @@ function signout_user() {
     firebase.auth().signOut().then(function () {
         // Sign-out successful.
         console.log("Sign out successful");
-        //window.open("./Website_Front/login.html")
+        window.open("./Website_Front/login.html")
     }).catch(function (error) {
         // An error happened.
         console.log(error)
