@@ -28,17 +28,13 @@ $(document).ready(function () {
     })
 });
 
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 function signup() {
     let name = $("#signupform > input[type=name]").val();
     let email = $("#signupform > input[type=email]").val();
     let password = $("#signupform > input[type=password]").val();
-    //create_user(email, password);
+    create_user(email, password);
     console.log("Signing Up");
-    signin_user(email, password);
+    //signin_user(email, password);
     let uid = null;
     while (uid == null) {
         uid = fetch_user_id()
@@ -46,7 +42,8 @@ function signup() {
     console.log(uid);
     firebase.database().ref("AllUsers/" + uid).set({
         "Name": name
-    })
+    });
+    window.open("../groupPage.html");
 }
 
 function login() {
@@ -55,4 +52,5 @@ function login() {
     signin_user(email, password);
     console.log("Signing In");
     console.log("User ID: " + fetch_user_id() + " signed in")
+    window.open("../groupPage.html");
 }
