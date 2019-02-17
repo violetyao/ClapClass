@@ -48,9 +48,9 @@ function comp(t1, t2){
 * return a list of preferences [[id, val], [id, val], ...]
 */
 function rank_users(uid, all_user_id){
-    console.log("object: "+uid);
-    console.log("all other users: ");
-    console.log(all_user_id);
+    // console.log("object: "+uid);
+    // console.log("all other users: ");
+    // console.log(all_user_id);
 	let queue = new PriorityQueue(comp);
     let l = Math.min(all_user_id.length, suggestionMax);
     for (i = 0; i < all_user_id.length; i++) {
@@ -87,10 +87,11 @@ and then we combine all these ranking lists into a big list and return it
 */
 function complete_ranking_users(all_user_id) {
     for (i = 0; i < all_user_id.length; i++) {
-        let pList = rank_users(all_user_id[i], all_user_id);
+        let uid = all_user_id[i];
+        let pList = rank_users(uid, all_user_id);
         // all_user_id[i].preference = pList;
 		// all_user_id[i].write();
-        // TODO: update user preference
+        update_preference(uid, all_user_id)
     }
 }
 
@@ -136,11 +137,11 @@ function further_improve_ranking(uid){
 
 function further_improve_everyone(users){
 	for (i =0; i < users.length; i ++){
-		let u = users[i];
-		let new_list = further_improve_ranking(u);
+		let uid = users[i];
+		let new_list = further_improve_ranking(uid);
 		// u.preference = further_improve_ranking(u, users);
 		// u.write();
-        // TODO: update user preference
+        update_preference(uid, new_list);
 	}
 }
 
@@ -252,11 +253,10 @@ function group_corr(user_id, group, classes){
 }
 
 
-
 function match_groups(user_id, classes){
     // let group_num = get_total_number_of_groups();
     let all_group_ids = get_all_group_ids();
-    let l = Math.min(groupSuggestionLength, all_group_ids.length);
+    let l = Math.min(groupSuggestionLength, all_group_ids.length); // final length of the returned array
     let groups = new Array(l);
     let fringe = new PriorityQueue(comp);
     for (let i = 0; i < all_group_ids.length; i ++){
