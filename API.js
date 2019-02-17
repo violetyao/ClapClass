@@ -258,7 +258,7 @@ function join_group(groupId) {
 	var uid = fetch_user_id();
     let ref = firebase.database().ref("/Group/" + groupId + "/students");
     ref.once("value").then(function (snapshot) {
-        currentStudents = snapshot.val();
+        let currentStudents = snapshot.val();
         if (!(uid in currentStudents)) {
             currentStudents.push(uid);
             snapshot.ref.set(currentStudents);
@@ -268,10 +268,13 @@ function join_group(groupId) {
     // Add group to student
     ref = firebase.database().ref("/AllUsers/" + uid + "/MyGroups");
     ref.once("value").then(function (snapshot) {
-        currentGroups = snapshot.val();
-        if (!(groupId in currentStudents)) {
+        let currentGroups = snapshot.val();
+        console.log(currentGroups);
+        if (currentGroups == null) {
+            currentGroups = [groupId];
+        } else if (!(groupId in currentGroups)) {
             currentGroups.push(groupId);
-            snapshot.ref.set(currentGroups);
         }
+        snapshot.ref.set(currentGroups);
     });
 }
