@@ -9,16 +9,6 @@ Clapclass.io is a smart platform to help students find study buddies with simila
 ### Group Matching
 Aside from current course load, ClapClass asks users to fill out a work philosophy survey, including attitudes towards extra credits, preferred studying time, preference over pulling an all nighter or planning tasks for several days, etc. Based on what classes users are taking and their respective study habits, we match a user with several recommended study groups. Cliking on different groups’ info pages, user will decide which study group to join.
 
-The matching algorithm that computes the “correlation” between the user and study a group, we make sure the group covers the classes that the user selected, and rank each group based on the combination of the correlations between the user and each of the group member. 
-
-To speed up the computation, we use priority queue to store the groups and their respective ranking.
-
-#### Partner Page
-A row of checkboxes at the top. Each cooresponds to a class which you haven't have a study group for. Select multiple boxes to indicate which classes you want a study group.
-
-A list of recommendations below the checkboxes. These are recommendations of viable plans.(each plan is a combination of several groups, together cover all the classes checked). Beside each plan you can apply
-
-
 ### Study Group Toolkit
 #### Co-note-taking
 Taking notes on Google Doc with your study group! 
@@ -42,7 +32,7 @@ Crawled 6000+ classes in less than an hour.
 How to use different libraries, such as firebase APIs and NoSQL, and Dreamweaver is a great tool to visualize and locate code!
 
 ## What's next for ClapClass
-We would incorporate more study group features, such as grabing food together when group members' available time slots are close during meal time. We also plan to implement a credit system. Showing up on time for group meetings and sharing lecture notes will increase credit and vice versa. 
+We would incorporate more study group features, such as grabing food together when group members' available time slots are close around meal time. We also plan to implement a credit system. Showing up on time for group meetings and sharing lecture notes will increase credit and vice versa. 
 
 ## API
 get_user_name(userid) // Given a userId, return the corresponding username
