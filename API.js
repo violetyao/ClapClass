@@ -193,7 +193,7 @@ function get_user_answer(uid) {
 }
 
 function get_group_by_id(group_id) {
-    return all_groups;
+    return all_groups[group_id];
 }
 
 function get_total_number_of_groups() {
