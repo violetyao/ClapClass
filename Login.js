@@ -104,7 +104,7 @@ function button_signin() {
 function signin_user(email, password, url = null) {
     firebase.auth().signInWithEmailAndPassword(email, password).then(function () {
         if (url != null) {
-            window.open(url);
+            window.open(url, "_self");
         }
     }).catch(function (error) {
         // Handle Errors here.
@@ -117,7 +117,8 @@ function signin_user(email, password, url = null) {
 function signout_user() {
     firebase.auth().signOut().then(function () {
         // Sign-out successful.
-        console.log("Sign out successful")
+        console.log("Sign out successful");
+        window.open("./Website_Front/login.html", "_self")
     }).catch(function (error) {
         // An error happened.
         console.log(error)
