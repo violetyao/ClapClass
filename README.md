@@ -9,6 +9,10 @@ Clapclass.io is a smart platform to help students find study buddies with simila
 ### Group Matching
 Aside from current course load, ClapClass asks users to fill out a work philosophy survey, including attitudes towards extra credits, preferred studying time, preference over pulling an all nighter or planning tasks for several days, etc. Based on what classes users are taking and their respective study habits, we match a user with several recommended study groups. Cliking on different groups’ info pages, user will decide which study group to join.
 
+The matching algorithm that computes the “correlation” between the user and study a group, we make sure the group covers the classes that the user selected, and rank each group based on the combination of the correlations between the user and each of the group member. 
+
+To speed up the computation, we use priority queue to store the groups and their respective ranking.
+
 ### Study Group Toolkit
 #### Co-note-taking
 Taking notes on Google Doc with your study group! 
